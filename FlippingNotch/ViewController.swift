@@ -16,6 +16,10 @@ final class ViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var setTimeView: UIView!
+    
+    @IBOutlet var visualEffectView: UIVisualEffectView!
+    
     // MARK: Fileprivates
     
     fileprivate var notchView = UIView()
@@ -24,27 +28,29 @@ final class ViewController: UIViewController {
     
     // MARK: Overrides
     
-    @IBOutlet var setTimeView: UIView!
-    
-    @IBOutlet var visualEffectView: UIVisualEffectView!
-    
-    @IBAction func doneBtn(_ sender: UIButton) {
-        animateOut()
-    }
-    
-    var effect: UIVisualEffect!
+    private var effect: UIVisualEffect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTimeView.isHidden = true
+        setupScreen()
+        
+//        setTimeView.isHidden = true
+//        visualEffectView.isHidden = true
+//        effect = visualEffectView.effect
+//        visualEffectView.effect = nil
+//
+//        configureNotchView()
+//
+//        collectionView.alwaysBounceVertical = true
+    }
+    
+    private func setupScreen() {
+        setupPopupContainer()
+    }
+    
+    private func setupPopupContainer() {
         visualEffectView.isHidden = true
-        effect = visualEffectView.effect
-        visualEffectView.effect = nil
-        
-        configureNotchView()
-        
-        collectionView.alwaysBounceVertical = true
     }
     
     func animateIn() {
@@ -66,11 +72,13 @@ final class ViewController: UIViewController {
     }
     
     private func showModal() {
-        
+        visualEffectView.isHidden = false
+        setTimeView.isHidden = false
     }
     
     private func hideModal() {
-        
+        visualEffectView.isHidden = true
+        setTimeView.isHidden = true
     }
     
     func animateOut() {
@@ -173,6 +181,10 @@ final class ViewController: UIViewController {
     private func onDatasourceChange(_ newItems: [NoteViewModel]) {
         collectionView.reloadData()
     }
+    
+    @IBAction func doneBtn(_ sender: UIButton) {
+        hideModal()
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -234,7 +246,6 @@ extension ViewController: UICollectionViewDelegate {
 
 extension ViewController: CardNoteDelegate {
     func didTapAddButton() {
-        animateIn()
-        print("got this tap in main VC!")
+        showModal()
     }
 }
