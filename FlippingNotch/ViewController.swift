@@ -36,6 +36,11 @@ final class ViewController: UIViewController {
         setupScreen()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        updateMessage()
+    }
+    
     private func setupScreen() {
         setupPopupContainer()
         
