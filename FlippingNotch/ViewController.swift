@@ -33,11 +33,13 @@ final class ViewController: UIViewController {
     
     @IBAction func yellowBtn(_ sender: UIButton) {
         // noteBackground.backgroundColor = UIColor.init(red: 253, green: 205, blue: 5, alpha: 1)
+        headerNote.backgroundColor = UIColor.init(red: 253, green: 205, blue: 5, alpha: 1)
     }
     
     @IBAction func redBtn(_ sender: UIButton) {
     }
     
+    @IBOutlet weak var headerNote: UIView!
     // MY CODE END
     override func viewDidLoad() {
         super.viewDidLoad()

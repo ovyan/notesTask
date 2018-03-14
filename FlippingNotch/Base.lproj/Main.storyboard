@@ -214,6 +214,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="KBN-KV-eYb" id="cJn-KH-Cga"/>
+                        <outlet property="headerNote" destination="zUg-OG-O3Q" id="Tht-2T-OSA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
