@@ -58,22 +58,26 @@ final class ViewController: UIViewController {
         UIView.animate(withDuration: 0.3, animations: animateIn)
     }
     
+    private func hideModal() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveLinear], animations: animateOut, completion: onAnimationEnd)
+    }
+    
     private func animateIn() {
         visualEffectView.alpha = 1
         setTimeView.alpha = 1
     }
     
-    private func hideModal() {
-        visualEffectView.isHidden = true
-        setTimeView.isHidden = true
-        
-        UIView.animate(withDuration: 0.3, animations: animateOut)
-    }
-    
     private func animateOut() {
+        setTimeView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        
         setTimeView.alpha = 0
         visualEffectView.alpha = 0
-        // setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+    }
+    
+    private func onAnimationEnd(_ unused: Bool) {
+        setTimeView.transform = .identity
+        visualEffectView.isHidden = true
+        setTimeView.isHidden = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
