@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9072F592059B0CF00137EFC /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9072F582059B0CF00137EFC /* NoteViewModel.swift */; };
+		B9072F5C2059B70D00137EFC /* NotesMockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9072F5B2059B70D00137EFC /* NotesMockDataProvider.swift */; };
 		B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94FAF8120598A5900A962D5 /* UIColorExtension.swift */; };
 		B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */; };
 		DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B9072F582059B0CF00137EFC /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		B9072F5B2059B70D00137EFC /* NotesMockDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMockDataProvider.swift; sourceTree = "<group>"; };
 		B94FAF8120598A5900A962D5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extention.swift"; sourceTree = "<group>"; };
@@ -47,6 +51,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B9072F562059B0A400137EFC /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B9072F572059B0B700137EFC /* Model */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B9072F572059B0B700137EFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B9072F582059B0CF00137EFC /* NoteViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B9072F5A2059B6FF00137EFC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B9072F5B2059B70D00137EFC /* NotesMockDataProvider.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		DC2CC5E42010D140004DB704 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +105,8 @@
 		DC4D15A0200BDE240060BA1A /* FlippingNotch */ = {
 			isa = PBXGroup;
 			children = (
+				B9072F5A2059B6FF00137EFC /* Service */,
+				B9072F562059B0A400137EFC /* Presentation */,
 				DC4D15A1200BDE240060BA1A /* AppDelegate.swift */,
 				DC4D15A3200BDE240060BA1A /* ViewController.swift */,
 				DC2CC5E92010D1E1004DB704 /* Constants.swift */,
@@ -162,8 +192,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9072F5C2059B70D00137EFC /* NotesMockDataProvider.swift in Sources */,
 				DC2CC5EA2010D1E1004DB704 /* Constants.swift in Sources */,
 				DC2CC5E82010D199004DB704 /* UIImage+Extention.swift in Sources */,
+				B9072F592059B0CF00137EFC /* NoteViewModel.swift in Sources */,
 				DC4D15A4200BDE240060BA1A /* ViewController.swift in Sources */,
 				B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */,
 				DC2CC5EC201107D8004DB704 /* UIView+Extentions.swift in Sources */,

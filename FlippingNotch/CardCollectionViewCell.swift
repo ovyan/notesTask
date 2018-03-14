@@ -27,6 +27,6 @@ final class CardCollectionViewCell: UICollectionViewCell {
         headerView.backgroundColor = UIColor.rgb(59, 198, 81)
     }
     @IBAction func watchBtnTap(_ sender: UIButton) {
-        
+
     }
 }

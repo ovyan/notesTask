@@ -34,6 +34,10 @@ final class ViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
+    // MARK: - Members
+    
+    private var datasource = NotesMockDataProvider.notes()
+    
     // MARK: UI
     
     private func configureNotchView() {
@@ -123,6 +127,16 @@ extension ViewController: UICollectionViewDataSource {
         
         return cell
     }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if indexPath.row == 0 {
+//            return CGSize(width: 360, height: 270)
+//        }
+//
+//        return CGSize(width: 360, height: 210)
+//    }
 }
 
 // MARK: UICollectionViewDelegate
