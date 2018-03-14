@@ -38,7 +38,6 @@ final class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-        updateMessage()
     }
     
     private func setupScreen() {
