@@ -33,13 +33,12 @@ final class ViewController: UIViewController {
     
     @IBAction func yellowBtn(_ sender: UIButton) {
         // noteBackground.backgroundColor = UIColor.init(red: 253, green: 205, blue: 5, alpha: 1)
-        headerNote.backgroundColor = UIColor.init(red: 253, green: 205, blue: 5, alpha: 1)
+        
     }
     
     @IBAction func redBtn(_ sender: UIButton) {
     }
     
-    @IBOutlet weak var headerNote: UIView!
     // MY CODE END
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,8 +131,9 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardCollectionViewCell
+        cell.headerView = UIView()
+        cell.headerView.backgroundColor = UIColor.init(red: 0, green: 199, blue: 0, alpha: 1)
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         
