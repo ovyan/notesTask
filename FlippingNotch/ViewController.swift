@@ -16,6 +16,10 @@ final class ViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var setTimeView: UIView!
+    
+    @IBOutlet var visualEffectView: UIVisualEffectView!
+    
     // MARK: Fileprivates
     
     fileprivate var notchView = UIView()
@@ -24,51 +28,58 @@ final class ViewController: UIViewController {
     
     // MARK: Overrides
     
-    @IBOutlet var setTimeView: UIView!
-    
-    @IBOutlet var visualEffectView: UIVisualEffectView!
-    @IBAction func doneBtn(_ sender: UIButton) {
-        animateOut()
-    }
-    var effect: UIVisualEffect!
+    private var effect: UIVisualEffect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTimeView.isHidden = true
-        visualEffectView.isHidden = true
-        effect = visualEffectView.effect
-        visualEffectView.effect = nil
-        configureNotchView()
-        collectionView.alwaysBounceVertical = true
+        
+        setupScreen()
+        
+//        setTimeView.isHidden = true
+//        visualEffectView.isHidden = true
+//        effect = visualEffectView.effect
+//        visualEffectView.effect = nil
+//
+//        configureNotchView()
+//
+//        collectionView.alwaysBounceVertical = true
     }
     
-    func animateIn() {
-        self.view.addSubview(setTimeView)
-        setTimeView.center = self.view.center
-        
-        //setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+    private func setupScreen() {
+        setupPopupContainer()
+    }
+    
+    private func setupPopupContainer() {
+        visualEffectView.alpha = 0
         setTimeView.alpha = 0
         
-        UIView.animate(withDuration: 0.4) {
-            self.visualEffectView.effect = self.effect
-            self.setTimeView.alpha = 1
-            self.setTimeView.transform = CGAffineTransform.identity
-        }
         visualEffectView.isHidden = false
         setTimeView.isHidden = false
     }
     
-    func animateOut() {
-        UIView.animate(withDuration: 0.3, animations: {
-            //self.setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.setTimeView.alpha = 0
-            
-            self.visualEffectView.effect = nil
-            }, completion: { (success:Bool) in
-                self.setTimeView.removeFromSuperview()
-                })
+    private func showModal() {
+        visualEffectView.isHidden = false
+        setTimeView.isHidden = false
+        
+        UIView.animate(withDuration: 0.3, animations: animateIn)
+    }
+    
+    private func animateIn() {
+        visualEffectView.alpha = 1
+        setTimeView.alpha = 1
+    }
+    
+    private func hideModal() {
         visualEffectView.isHidden = true
         setTimeView.isHidden = true
+        
+        UIView.animate(withDuration: 0.3, animations: animateOut)
+    }
+    
+    private func animateOut() {
+        setTimeView.alpha = 0
+        visualEffectView.alpha = 0
+        // setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -158,6 +169,10 @@ final class ViewController: UIViewController {
     private func onDatasourceChange(_ newItems: [NoteViewModel]) {
         collectionView.reloadData()
     }
+    
+    @IBAction func doneBtn(_ sender: UIButton) {
+        hideModal()
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -191,6 +206,17 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 //    }
 }
 
+extension ViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        let oldFrame = textView.frame
+        let newFrame = oldFrame.insetBy(dx: 0, dy: 16)
+        
+        textView.frame = newFrame
+        collectionView.setNeedsLayout()
+        collectionView.layoutSubviews()
+    }
+}
+
 // MARK: UICollectionViewDelegate
 
 extension ViewController: UICollectionViewDelegate {
@@ -208,7 +234,6 @@ extension ViewController: UICollectionViewDelegate {
 
 extension ViewController: CardNoteDelegate {
     func didTapAddButton() {
-        animateIn()
-        print("got this tap in main VC!")
+        showModal()
     }
 }
