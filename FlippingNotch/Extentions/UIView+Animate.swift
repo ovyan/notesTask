@@ -19,8 +19,11 @@ public final class Animator {
     /// Base Delay Before Animation Starts
     public var delay: TimeInterval = 0
     
-    /// Zoom transformation
-    public var zoomTransform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+    /// ZoomIn transformation
+    public var zoomInTransform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+    
+    /// ZoomOut transformation
+    public var zoomOutTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     
     /// Base Animation Options
     /// Default to `.curveEaseInOut`
@@ -32,13 +35,28 @@ public final class Animator {
 }
 
 public extension Animator {
+    // MARK: - Fade
+    
     public func fadeIn(_ views: [UIView]) {
-        // UIView.animate(withDuration: duration, delay: delay, options: options, animations: animations, completion: { self.restoreIdentity($0, reset) })
         UIView.animate(withDuration: duration, delay: delay, options: options, animations: { self.fadeIn(views: views) }, completion: nil)
     }
     
+    public func fadeOut(_ views: [UIView]) {
+        UIView.animate(withDuration: duration, delay: delay, options: options, animations: { self.fadeOut(views: views) }, completion: nil)
+    }
+    
+    // MARK: - Combined
+    
     public func fadeInZoomIn(fade: [UIView], zoom: [UIView]) {
         UIView.animate(withDuration: duration, delay: delay, options: options, animations: { self.fadeInZoomIn(fade, zoom) }, completion: { self.restoreIdentity($0, reset: zoom) })
+    }
+    
+    public func fadeOutZoomOut(fade: [UIView], zoom: [UIView]) {
+        UIView.animate(withDuration: duration, delay: delay, options: options, animations: { self.fadeOutZoomOut(fade, zoom) }, completion: { self.restoreIdentity($0, reset: zoom) })
+    }
+    
+    public func fadeOutZoomIn(fade: [UIView], zoom: [UIView]) {
+        UIView.animate(withDuration: duration, delay: delay, options: options, animations: { self.fadeOutZoomIn(fade, zoom) }, completion: { self.restoreIdentity($0, reset: zoom) })
     }
 }
 
@@ -50,14 +68,38 @@ private extension Animator {
         views.forEach { $0.alpha = 1 }
     }
     
-    private func fadeInZoomIn(_ fade: [UIView], _ zoom: [UIView]) {
-        fadeIn(fade)
-        zoomIn(zoom)
+    private func fadeOut(views: [UIView]) {
+        views.forEach { $0.alpha = 0 }
     }
     
-    private func zoomIn(_ views: [UIView]) {
-        views.forEach { $0.transform = zoomTransform }
+    // MARK: - Zoom
+    
+    private func zoomIn(views: [UIView]) {
+        views.forEach { $0.transform = zoomInTransform }
     }
+    
+    private func zoomOut(views: [UIView]) {
+        views.forEach { $0.transform = zoomOutTransform }
+    }
+    
+    // MARK: - Combined
+    
+    private func fadeInZoomIn(_ fade: [UIView], _ zoom: [UIView]) {
+        fadeIn(views: fade)
+        zoomIn(views: zoom)
+    }
+    
+    private func fadeOutZoomOut(_ fade: [UIView], _ zoom: [UIView]) {
+        fadeOut(views: fade)
+        zoomOut(views: zoom)
+    }
+    
+    private func fadeOutZoomIn(_ fade: [UIView], _ zoom: [UIView]) {
+        fadeOut(views: fade)
+        zoomIn(views: zoom)
+    }
+    
+    // MARK: - Helpers
     
     private func restoreIdentity(_ unused: Bool, reset: [UIView]) {
         reset.forEach { $0.transform = .identity }
