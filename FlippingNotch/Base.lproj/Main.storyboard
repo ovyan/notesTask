@@ -76,11 +76,10 @@
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXv-5y-0fd" userLabel="Bot Separator">
-                                                            <rect key="frame" x="0.0" y="133" width="343" height="1"/>
+                                                            <rect key="frame" x="0.0" y="132" width="343" height="1"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="hqA-Pq-g1R"/>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="oth-na-HCE"/>
                                                             </constraints>
                                                             <viewLayoutGuide key="safeArea" id="zcl-uN-V4p"/>
                                                         </view>
@@ -198,7 +197,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="zUg-OG-O3Q" secondAttribute="trailing" id="P07-v9-eXr"/>
                                                         <constraint firstAttribute="bottom" secondItem="5ef-wD-Ywo" secondAttribute="bottom" id="WER-c8-Ek0"/>
                                                         <constraint firstAttribute="trailing" secondItem="uXv-5y-0fd" secondAttribute="trailing" id="h6o-I6-CMt"/>
-                                                        <constraint firstItem="uXv-5y-0fd" firstAttribute="top" secondItem="Z1x-wq-7UG" secondAttribute="bottom" id="pB3-k2-ler"/>
+                                                        <constraint firstItem="uXv-5y-0fd" firstAttribute="top" secondItem="Z1x-wq-7UG" secondAttribute="bottom" constant="-1" id="pB3-k2-ler"/>
                                                         <constraint firstItem="Z1x-wq-7UG" firstAttribute="top" secondItem="d5w-eg-ouO" secondAttribute="bottom" id="tb9-86-bxY"/>
                                                         <constraint firstItem="5ef-wD-Ywo" firstAttribute="leading" secondItem="tqd-Ls-uUp" secondAttribute="leading" id="zDx-MC-USm"/>
                                                         <constraint firstItem="uXv-5y-0fd" firstAttribute="leading" secondItem="tqd-Ls-uUp" secondAttribute="leading" id="zfn-LW-Ljs"/>
