@@ -50,48 +50,36 @@ final class ViewController: UIViewController {
     }
     
     private func setupPopupContainer() {
-        visualEffectView.isHidden = true
-    }
-    
-    func animateIn() {
-        if setTimeView.superview == nil { view.addSubview(setTimeView) }
-        
-        setTimeView.center = view.center
-        
-        // setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        visualEffectView.alpha = 0
         setTimeView.alpha = 0
         
-        UIView.animate(withDuration: 0.4) {
-            self.visualEffectView.isHidden = false
-            self.setTimeView.isHidden = false
-            
-            self.visualEffectView.effect = self.effect
-            self.setTimeView.alpha = 1
-            self.setTimeView.transform = CGAffineTransform.identity
-        }
+        visualEffectView.isHidden = false
+        setTimeView.isHidden = false
     }
     
     private func showModal() {
         visualEffectView.isHidden = false
         setTimeView.isHidden = false
+        
+        UIView.animate(withDuration: 0.3, animations: animateIn)
+    }
+    
+    private func animateIn() {
+        visualEffectView.alpha = 1
+        setTimeView.alpha = 1
     }
     
     private func hideModal() {
         visualEffectView.isHidden = true
         setTimeView.isHidden = true
+        
+        UIView.animate(withDuration: 0.3, animations: animateOut)
     }
     
-    func animateOut() {
-        UIView.animate(withDuration: 0.3, animations: {
-            // self.setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.setTimeView.alpha = 0
-            self.visualEffectView.isHidden = true
-            self.setTimeView.isHidden = true
-            
-            self.visualEffectView.effect = nil
-        }, completion: { (_: Bool) in
-            self.setTimeView.removeFromSuperview()
-        })
+    private func animateOut() {
+        setTimeView.alpha = 0
+        visualEffectView.alpha = 0
+        // setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
