@@ -28,14 +28,47 @@ final class ViewController: UIViewController {
     
     @IBOutlet var visualEffectView: UIVisualEffectView!
     @IBAction func doneBtn(_ sender: UIButton) {
+        animateOut()
     }
     var effect: UIVisualEffect!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setTimeView.isHidden = true
+        visualEffectView.isHidden = true
+        effect = visualEffectView.effect
+        visualEffectView.effect = nil
         configureNotchView()
         collectionView.alwaysBounceVertical = true
+    }
+    
+    func animateIn() {
+        self.view.addSubview(setTimeView)
+        setTimeView.center = self.view.center
+        
+        //setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        setTimeView.alpha = 0
+        
+        UIView.animate(withDuration: 0.4) {
+            self.visualEffectView.effect = self.effect
+            self.setTimeView.alpha = 1
+            self.setTimeView.transform = CGAffineTransform.identity
+        }
+        visualEffectView.isHidden = false
+        setTimeView.isHidden = false
+    }
+    
+    func animateOut() {
+        UIView.animate(withDuration: 0.3, animations: {
+            //self.setTimeView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.setTimeView.alpha = 0
+            
+            self.visualEffectView.effect = nil
+            }, completion: { (success:Bool) in
+                self.setTimeView.removeFromSuperview()
+                })
+        visualEffectView.isHidden = true
+        setTimeView.isHidden = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
@@ -175,6 +208,7 @@ extension ViewController: UICollectionViewDelegate {
 
 extension ViewController: CardNoteDelegate {
     func didTapAddButton() {
+        animateIn()
         print("got this tap in main VC!")
     }
 }
