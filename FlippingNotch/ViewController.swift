@@ -119,7 +119,7 @@ final class ViewController: UIViewController {
     
     private func appendNote() {
         let newNote = NotesMockDataProvider.note()
-        datasource.append(newNote)
+        datasource.insert(newNote, at: 0)
     }
     
     private func onDatasourceChange(_ newItems: [NoteViewModel]) {
@@ -176,6 +176,5 @@ extension ViewController: UICollectionViewDelegate {
 extension ViewController: CardNoteDelegate {
     func didTapAddButton() {
         print("got this tap in main VC!")
-        
     }
 }
