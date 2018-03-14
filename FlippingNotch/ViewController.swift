@@ -21,7 +21,6 @@ final class ViewController: UIViewController {
     fileprivate var notchView = UIView()
     fileprivate var notchViewBottomConstraint: NSLayoutConstraint!
     fileprivate var isPulling: Bool = false
-    fileprivate var numberOfItemsInSection = 10
     
     // MARK: Overrides
     
@@ -36,7 +35,7 @@ final class ViewController: UIViewController {
     
     // MARK: - Members
     
-    private var datasource = NotesMockDataProvider.notes()
+    private var datasource = NotesMockDataProvider.notes(2) { didSet { onDatasourceChange(datasource) } }
     
     // MARK: UI
     
@@ -97,8 +96,7 @@ final class ViewController: UIViewController {
                                   self.collectionView.transform = CGAffineTransform.identity
                                   animatableView.removeFromSuperview()
                                   self.isPulling = false
-                                  self.numberOfItemsInSection += 1
-                                  self.collectionView.reloadData()
+                                  self.appendNote()
             })
         }
         
@@ -111,13 +109,22 @@ final class ViewController: UIViewController {
         animatableView.layer.add(cornerRadiusAnimation, forKey: "cornerRadius")
         animatableView.layer.cornerRadius = 10
     }
+    
+    private func appendNote() {
+        let newNote = NotesMockDataProvider.note()
+        datasource.append(newNote)
+    }
+    
+    private func onDatasourceChange(_ newItems: [NoteViewModel]) {
+        collectionView.reloadData()
+    }
 }
 
 // MARK: UICollectionViewDataSource
 
 extension ViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return numberOfItemsInSection }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return datasource.count }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardCollectionViewCell

@@ -13,6 +13,10 @@ final class CardCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var headerView: UIView!
 
+    // MARK: - Members
+
+    weak var delegate: CardNoteDelegate?
+
     // MARK: - Actions
 
     @IBAction func redBtn(_ sender: UIButton) {
@@ -26,7 +30,23 @@ final class CardCollectionViewCell: UICollectionViewCell {
     @IBAction func greenBtn(_ sender: UIButton) {
         headerView.backgroundColor = UIColor.rgb(59, 198, 81)
     }
+
     @IBAction func watchBtnTap(_ sender: UIButton) {
 
+    }
+
+    // this is your outlet from Storyboard
+    private func didTapAddButton() {
+        delegate?.didTapAddButton()
+    }
+}
+
+protocol CardNoteDelegate: class {
+    func didTapAddButton()
+}
+
+extension ViewController: CardNoteDelegate {
+    func didTapAddButton() {
+        print("got this tap in main VC!")
     }
 }

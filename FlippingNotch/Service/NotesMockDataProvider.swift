@@ -9,9 +9,8 @@
 import Foundation
 
 final class NotesMockDataProvider {
-    static func notes() -> [NoteViewModel] {
+    static func notes(_ count: Int = 12) -> [NoteViewModel] {
         var notes = [NoteViewModel]()
-        let count = 12
         
         for i in 0..<count {
             let str = "\(i + 1)"
@@ -21,6 +20,10 @@ final class NotesMockDataProvider {
         }
         
         return notes
+    }
+    
+    static func note() -> NoteViewModel {
+        return NoteViewModel(title: "Note - rnd", text: "Text - rnd", priority: NotePriority.random(), timeLeft: 1337)
     }
     
     private init() {}

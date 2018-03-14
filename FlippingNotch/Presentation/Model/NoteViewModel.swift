@@ -21,7 +21,7 @@ enum NotePriority: Int {
 
 extension NotePriority {
     static func random() -> NotePriority {
-        let idx = arc4random_uniform(3 + 1)
+        let idx = arc4random_uniform(3)
 
         return NotePriority(rawValue: Int(idx))!
     }
