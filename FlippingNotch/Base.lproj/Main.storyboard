@@ -220,6 +220,9 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="headerView" destination="zUg-OG-O3Q" id="92j-zR-gLx"/>
+                                            <outlet property="noteTextView" destination="Z1x-wq-7UG" id="gml-Kn-9Ue"/>
+                                            <outlet property="noteTimeLeftLabel" destination="KQe-fL-VH5" id="CVO-qW-giD"/>
+                                            <outlet property="noteTitleLabel" destination="4ie-E7-zsg" id="vTg-PI-J4Z"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -17,6 +17,18 @@ final class CardCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var headerView: UIView!
 
+    @IBOutlet var noteTitleLabel: UILabel!
+
+    @IBOutlet var noteTextView: UITextView!
+
+    @IBOutlet var noteTimeLeftLabel: UILabel!
+
+    // MARK: - Setters
+
+    var title: String? { didSet { noteTitleLabel.text = title } }
+
+    var text: String? { didSet { noteTextView.text = text ?? "" } }
+
     // MARK: - Members
 
     weak var delegate: CardNoteDelegate?

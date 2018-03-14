@@ -139,6 +139,11 @@ extension ViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         cell.delegate = self
+        
+        let item = datasource[indexPath.row]
+        cell.title = item.title
+        cell.text = item.text
+        
         return cell
     }
 }
