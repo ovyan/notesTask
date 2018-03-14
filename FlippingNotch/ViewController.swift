@@ -34,19 +34,13 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupScreen()
-        
-//        setTimeView.isHidden = true
-//        visualEffectView.isHidden = true
-//        effect = visualEffectView.effect
-//        visualEffectView.effect = nil
-//
-//        configureNotchView()
-//
-//        collectionView.alwaysBounceVertical = true
     }
     
     private func setupScreen() {
         setupPopupContainer()
+        
+        configureNotchView()
+        collectionView.alwaysBounceVertical = true
     }
     
     private func setupPopupContainer() {
