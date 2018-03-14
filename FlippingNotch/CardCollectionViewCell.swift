@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CardNoteDelegate: class {
+    func didTapAddButton()
+}
+
 final class CardCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
 
@@ -32,21 +36,6 @@ final class CardCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func watchBtnTap(_ sender: UIButton) {
-
-    }
-
-    // this is your outlet from Storyboard
-    private func didTapAddButton() {
         delegate?.didTapAddButton()
-    }
-}
-
-protocol CardNoteDelegate: class {
-    func didTapAddButton()
-}
-
-extension ViewController: CardNoteDelegate {
-    func didTapAddButton() {
-        print("got this tap in main VC!")
     }
 }

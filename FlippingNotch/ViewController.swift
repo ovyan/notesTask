@@ -24,6 +24,13 @@ final class ViewController: UIViewController {
     
     // MARK: Overrides
     
+    @IBOutlet var setTimeView: UIView!
+    
+    @IBOutlet var visualEffectView: UIVisualEffectView!
+    @IBAction func doneBtn(_ sender: UIButton) {
+    }
+    var effect: UIVisualEffect!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,7 +138,7 @@ extension ViewController: UICollectionViewDataSource {
         cell.headerView.backgroundColor = UIColor.rgb(251, 199, 0)
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
-        
+        cell.delegate = self
         return cell
     }
 }
@@ -158,5 +165,12 @@ extension ViewController: UICollectionViewDelegate {
         if scrollView.contentOffset.y <= Constants.maxScrollOffset {
             animateView()
         }
+    }
+}
+
+extension ViewController: CardNoteDelegate {
+    func didTapAddButton() {
+        print("got this tap in main VC!")
+        
     }
 }
