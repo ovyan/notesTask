@@ -21,25 +21,10 @@ final class ViewController: UIViewController {
     fileprivate var notchView = UIView()
     fileprivate var notchViewBottomConstraint: NSLayoutConstraint!
     fileprivate var isPulling: Bool = false
-    fileprivate var numberOfItemsInSection = 1
+    fileprivate var numberOfItemsInSection = 10
     
     // MARK: Overrides
     
-    // MY CODE START
-    
-    @IBAction func greenBtn(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func yellowBtn(_ sender: UIButton) {
-        // noteBackground.backgroundColor = UIColor.init(red: 253, green: 205, blue: 5, alpha: 1)
-        
-    }
-    
-    @IBAction func redBtn(_ sender: UIButton) {
-    }
-    
-    // MY CODE END
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,9 +32,7 @@ final class ViewController: UIViewController {
         collectionView.alwaysBounceVertical = true
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     // MARK: UI
     
@@ -84,15 +67,17 @@ final class ViewController: UIViewController {
         
         collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -Constants.maxScrollOffset)
         
-        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
+        func cvAnimation() {
             let itemSize = flowLayout.itemSize
             animatableView.frame.size = CGSize(width: Constants.notchWidth,
                                                height: (itemSize.height / itemSize.width) * Constants.notchWidth)
-            animatableView.image = UIImage.fromColor(self.view.backgroundColor?.withAlphaComponent(0.2) ?? UIColor.black)
+            animatableView.image = UIImage.fromColor(view.backgroundColor?.withAlphaComponent(0.2) ?? UIColor.black)
             animatableView.frame.origin.y = Constants.notchViewTopInset
-            self.collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height * 0.5)
-        }) { _ in
-            let item = self.collectionView.cellForItem(at: IndexPath(row: 0, section: 0))
+            collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height * 0.5)
+        }
+        
+        func cvAnimationCompletion(_ param: Bool) {
+            let item = collectionView.cellForItem(at: IndexPath(row: 0, section: 0))
             animatableView.image = item?.snapshotImage()
             
             UIView.transition(with: animatableView,
@@ -113,6 +98,8 @@ final class ViewController: UIViewController {
             })
         }
         
+        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: cvAnimation, completion: cvAnimationCompletion)
+        
         let cornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
         cornerRadiusAnimation.fromValue = 16
         cornerRadiusAnimation.toValue = 10
@@ -126,14 +113,11 @@ final class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfItemsInSection
-    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return numberOfItemsInSection }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardCollectionViewCell
-        cell.headerView = UIView()
-        cell.headerView.backgroundColor = UIColor.init(red: 0, green: 199, blue: 0, alpha: 1)
+        cell.headerView.backgroundColor = UIColor(red: 0, green: 199, blue: 0, alpha: 1)
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94FAF8120598A5900A962D5 /* UIColorExtension.swift */; };
 		B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */; };
 		DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */; };
 		DC2CC5E82010D199004DB704 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B94FAF8120598A5900A962D5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extention.swift"; sourceTree = "<group>"; };
 		DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 		DC2CC5E42010D140004DB704 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				B94FAF8120598A5900A962D5 /* UIColorExtension.swift */,
 				DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */,
 				DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */,
 				DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */,
@@ -162,6 +165,7 @@
 				DC2CC5EA2010D1E1004DB704 /* Constants.swift in Sources */,
 				DC2CC5E82010D199004DB704 /* UIImage+Extention.swift in Sources */,
 				DC4D15A4200BDE240060BA1A /* ViewController.swift in Sources */,
+				B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */,
 				DC2CC5EC201107D8004DB704 /* UIView+Extentions.swift in Sources */,
 				B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */,
 				DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */,
