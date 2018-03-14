@@ -55,7 +55,8 @@ final class ViewController: UIViewController {
         visualEffectView.isHidden = false
         setTimeView.isHidden = false
         
-        UIView.animate(withDuration: 0.3, animations: animateIn)
+        // Animator.shared.fadeIn([visualEffectView, setTimeView])
+        Animator.shared.fadeInZoomIn(fade: [visualEffectView, setTimeView], zoom: [setTimeView])
     }
     
     private func hideModal() {
@@ -63,6 +64,7 @@ final class ViewController: UIViewController {
     }
     
     private func animateIn() {
+        setTimeView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
         visualEffectView.alpha = 1
         setTimeView.alpha = 1
     }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B9072F592059B0CF00137EFC /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9072F582059B0CF00137EFC /* NoteViewModel.swift */; };
 		B9072F5C2059B70D00137EFC /* NotesMockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9072F5B2059B70D00137EFC /* NotesMockDataProvider.swift */; };
+		B93319782059D50D00C3ED33 /* UIView+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319772059D50D00C3ED33 /* UIView+Animate.swift */; };
+		B933197A2059D5A300C3ED33 /* EPType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319792059D5A300C3ED33 /* EPType.swift */; };
 		B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94FAF8120598A5900A962D5 /* UIColorExtension.swift */; };
 		B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */; };
 		DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		B9072F582059B0CF00137EFC /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		B9072F5B2059B70D00137EFC /* NotesMockDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMockDataProvider.swift; sourceTree = "<group>"; };
+		B93319772059D50D00C3ED33 /* UIView+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animate.swift"; sourceTree = "<group>"; };
+		B93319792059D5A300C3ED33 /* EPType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPType.swift; sourceTree = "<group>"; };
 		B94FAF8120598A5900A962D5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extention.swift"; sourceTree = "<group>"; };
@@ -78,10 +82,12 @@
 		DC2CC5E42010D140004DB704 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				B93319792059D5A300C3ED33 /* EPType.swift */,
 				B94FAF8120598A5900A962D5 /* UIColorExtension.swift */,
 				DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */,
 				DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */,
 				DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */,
+				B93319772059D50D00C3ED33 /* UIView+Animate.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -198,9 +204,11 @@
 				B9072F592059B0CF00137EFC /* NoteViewModel.swift in Sources */,
 				DC4D15A4200BDE240060BA1A /* ViewController.swift in Sources */,
 				B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */,
+				B93319782059D50D00C3ED33 /* UIView+Animate.swift in Sources */,
 				DC2CC5EC201107D8004DB704 /* UIView+Extentions.swift in Sources */,
 				B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */,
 				DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */,
+				B933197A2059D5A300C3ED33 /* EPType.swift in Sources */,
 				DC4D15A2200BDE240060BA1A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VD97XKT54M;
 				INFOPLIST_FILE = FlippingNotch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = own2pwn.pp.ex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -356,6 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VD97XKT54M;
 				INFOPLIST_FILE = FlippingNotch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = own2pwn.pp.ex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
