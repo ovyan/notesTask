@@ -70,6 +70,9 @@
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="BYZ-38-t0r" id="IVG-ST-Ed8"/>
+                                                            </connections>
                                                         </textView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ef-wD-Ywo" userLabel="Toolbar">
                                                             <rect key="frame" x="0.0" y="135" width="343" height="44"/>
@@ -280,12 +283,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KBN-KV-eYb" secondAttribute="bottom" constant="9" id="yyP-B5-OCH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="4kr-ig-WIP"/>
-                                <exclude reference="bsm-sF-pXx"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="KBN-KV-eYb" id="cJn-KH-Cga"/>

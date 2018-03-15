@@ -176,14 +176,16 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+var firstItemHeight: CGFloat = 270
+
 extension ViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if indexPath.row == 0 {
-//            return CGSize(width: 360, height: 270)
-//        }
-//
-//        return CGSize(width: 360, height: 210)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.row == 0 {
+            return CGSize(width: 360, height: firstItemHeight)
+        }
+        
+        return CGSize(width: 360, height: 210)
+    }
 }
 
 extension ViewController: UITextViewDelegate {
@@ -191,9 +193,8 @@ extension ViewController: UITextViewDelegate {
         let oldFrame = textView.frame
         let newFrame = oldFrame.insetBy(dx: 0, dy: 16)
         
-        textView.frame = newFrame
-        collectionView.setNeedsLayout()
-        collectionView.layoutSubviews()
+        firstItemHeight += 8
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
 
