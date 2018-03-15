@@ -20,6 +20,9 @@ final class ViewController: UIViewController {
     
     @IBOutlet var visualEffectView: UIVisualEffectView!
     
+    @IBOutlet weak var timeScrollView: UIScrollView!
+    var contentWidth:CGFloat = 0.0
+
     // MARK: Fileprivates
     
     fileprivate var notchView = UIView()
@@ -32,6 +35,19 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timeScrollView.delegate = self
+        
+        for image in 0...5 {
+            let iconSize = 100
+            let imageToDisplay = UIImage(named: "\(image).png")
+            let imageView = UIImageView(image: imageToDisplay)
+            let xCoordinate = CGFloat(image)*CGFloat(iconSize+10)
+            contentWidth += CGFloat(iconSize + 10) //timeScrollView.frame.width
+            timeScrollView.addSubview(imageView)
+            imageView.frame = CGRect(x: xCoordinate + 10, y: (timeScrollView.frame.height / 2) - 50, width: 100, height: 100)
+        }
+        
+        timeScrollView.contentSize = CGSize(width: contentWidth+10, height: timeScrollView.frame.height)
         
         setupScreen()
     }
