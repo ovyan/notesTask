@@ -130,7 +130,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQe-fL-VH5">
-                                                                    <rect key="frame" x="141.5" y="14.5" width="70.5" height="16.5"/>
+                                                                    <rect key="frame" x="141.5" y="14" width="70.5" height="16.5"/>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="2 hours left">
                                                                             <attributes>
@@ -254,17 +254,20 @@
                                             <action selector="doneBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EZv-CS-dii"/>
                                         </connections>
                                     </button>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBY-NH-KXY">
-                                        <rect key="frame" x="8" y="53" width="319" height="110"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="0.46168664383561642" colorSpace="calibratedRGB"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBY-NH-KXY">
+                                        <rect key="frame" x="0.0" y="53" width="335" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.79928296232876717" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="xBY-NH-KXY" firstAttribute="leading" secondItem="bsm-sF-pXx" secondAttribute="leading" id="7xV-4B-b0e"/>
                                     <constraint firstItem="Z7c-Fk-tJg" firstAttribute="trailing" secondItem="uHj-7M-JFG" secondAttribute="trailing" constant="64" id="DAH-QX-n4Z"/>
+                                    <constraint firstAttribute="bottom" secondItem="xBY-NH-KXY" secondAttribute="bottom" constant="374" id="Fgc-v3-bPj"/>
                                     <constraint firstItem="Z7c-Fk-tJg" firstAttribute="bottom" secondItem="uHj-7M-JFG" secondAttribute="bottom" constant="36" id="Pn3-qz-mqq"/>
                                     <constraint firstItem="uHj-7M-JFG" firstAttribute="leading" secondItem="Z7c-Fk-tJg" secondAttribute="leading" constant="64" id="Ryr-fJ-GgQ"/>
+                                    <constraint firstItem="xBY-NH-KXY" firstAttribute="top" secondItem="DVL-Y5-riS" secondAttribute="bottom" constant="8" symbolic="YES" id="SHj-Gc-nsq"/>
+                                    <constraint firstItem="xBY-NH-KXY" firstAttribute="centerX" secondItem="DVL-Y5-riS" secondAttribute="centerX" id="kbD-Ub-2Ws"/>
                                     <constraint firstItem="DVL-Y5-riS" firstAttribute="top" secondItem="Z7c-Fk-tJg" secondAttribute="top" constant="16" id="oe3-Sh-29G"/>
                                     <constraint firstItem="DVL-Y5-riS" firstAttribute="centerX" secondItem="bsm-sF-pXx" secondAttribute="centerX" id="tCW-tT-PpE"/>
                                 </constraints>

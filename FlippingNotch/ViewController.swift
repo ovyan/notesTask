@@ -38,16 +38,20 @@ final class ViewController: UIViewController {
         timeScrollView.delegate = self
         
         for image in 0...5 {
-            let iconSize = 100
+            //Change ICON SIZE Only!
+            let iconSize:CGFloat = 75
             let imageToDisplay = UIImage(named: "\(image).png")
             let imageView = UIImageView(image: imageToDisplay)
-            let xCoordinate = CGFloat(image)*CGFloat(iconSize+10)
-            contentWidth += CGFloat(iconSize + 10) //timeScrollView.frame.width
+            
+            let xCoordinate = CGFloat(image)*CGFloat(iconSize + 15)
+            contentWidth += CGFloat(iconSize + 15) //timeScrollView.frame.width
             timeScrollView.addSubview(imageView)
-            imageView.frame = CGRect(x: xCoordinate + 10, y: (timeScrollView.frame.height / 2) - 50, width: 100, height: 100)
+            //imageView.backgroundColor = UIColor.rgb(240, 240, 240)
+            //imageView.layer.cornerRadius = 25
+            imageView.frame = CGRect(x: xCoordinate + 15, y: (timeScrollView.frame.height / 2) - iconSize/2, width: iconSize, height: iconSize)
         }
         
-        timeScrollView.contentSize = CGSize(width: contentWidth+10, height: timeScrollView.frame.height)
+        timeScrollView.contentSize = CGSize(width: contentWidth + 15, height: timeScrollView.frame.height)
         
         setupScreen()
     }
