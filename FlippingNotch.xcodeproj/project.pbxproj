@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27377752205AC9E200EE13E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27377751205AC9E200EE13E7 /* Assets.xcassets */; };
+		27377754205AD10A00EE13E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27377753205AD10A00EE13E7 /* Assets.xcassets */; };
 		B9072F592059B0CF00137EFC /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9072F582059B0CF00137EFC /* NoteViewModel.swift */; };
 		B9072F5C2059B70D00137EFC /* NotesMockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9072F5B2059B70D00137EFC /* NotesMockDataProvider.swift */; };
 		B93319782059D50D00C3ED33 /* UIView+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319772059D50D00C3ED33 /* UIView+Animate.swift */; };
@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		27377751205AC9E200EE13E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		27377753205AD10A00EE13E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9072F582059B0CF00137EFC /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		B9072F5B2059B70D00137EFC /* NotesMockDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMockDataProvider.swift; sourceTree = "<group>"; };
 		B93319772059D50D00C3ED33 /* UIView+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animate.swift"; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 				DC4D15A5200BDE240060BA1A /* Main.storyboard */,
 				DC4D15AA200BDE240060BA1A /* LaunchScreen.storyboard */,
 				DC4D15AD200BDE240060BA1A /* Info.plist */,
-				27377751205AC9E200EE13E7 /* Assets.xcassets */,
+				27377753205AD10A00EE13E7 /* Assets.xcassets */,
 				B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */,
 			);
 			path = FlippingNotch;
@@ -186,7 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC4D15AC200BDE240060BA1A /* LaunchScreen.storyboard in Resources */,
-				27377752205AC9E200EE13E7 /* Assets.xcassets in Resources */,
+				27377754205AD10A00EE13E7 /* Assets.xcassets in Resources */,
 				DC4D15A7200BDE240060BA1A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
