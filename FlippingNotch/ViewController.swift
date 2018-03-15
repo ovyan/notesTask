@@ -22,7 +22,7 @@ final class ViewController: UIViewController {
     
     @IBOutlet var timeScrollView: UIScrollView!
     
-    var contentWidth: CGFloat = 0.0
+    @IBOutlet var popupStackView: UIStackView!
     
     // MARK: Fileprivates
     
@@ -33,6 +33,8 @@ final class ViewController: UIViewController {
     // MARK: Overrides
     
     private var effect: UIVisualEffect!
+    
+    var contentWidth: CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,20 @@ final class ViewController: UIViewController {
         
         visualEffectView.isHidden = false
         setTimeView.isHidden = false
+        
+        addPopupButtons()
+    }
+    
+    private func addPopupButtons() {
+        let itemFrame = CGRect(origin: .zero, size: CGSize(width: 120, height: 120))
+        let itemContainer = UIView(frame: itemFrame)
+        itemContainer.backgroundColor = .yellow
+        let containerCenter = itemContainer.center
+        
+        let buttomImageView = UIImageView(frame: CGRect(origin: itemContainer.center, size: CGSize(width: 64, height: 64)))
+        buttomImageView.image = #imageLiteral(resourceName: "1")
+        
+        // let imageLabel = UILabel.init(frame: CGRect.init(origin: CGPoint.init(x: containerCenter.x, y: 92), size: <#T##CGSize#>))
     }
     
     private func showModal() {
@@ -154,8 +170,15 @@ final class ViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    // MARK: - Actions
+    
     @IBAction func doneBtn(_ sender: UIButton) {
         hideModal()
+    }
+    
+    @IBAction func onPopupButtonTap(_ sender: UIButton) {
+        let idx = abs(sender.tag) - 4
+        print("did tap on \(idx)!")
     }
 }
 
