@@ -20,9 +20,10 @@ final class ViewController: UIViewController {
     
     @IBOutlet var visualEffectView: UIVisualEffectView!
     
-    @IBOutlet weak var timeScrollView: UIScrollView!
-    var contentWidth:CGFloat = 0.0
-
+    @IBOutlet var timeScrollView: UIScrollView!
+    
+    var contentWidth: CGFloat = 0.0
+    
     // MARK: Fileprivates
     
     fileprivate var notchView = UIView()
@@ -35,23 +36,6 @@ final class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeScrollView.delegate = self
-        
-        for image in 0...5 {
-            //Change ICON SIZE Only!
-            let iconSize:CGFloat = 75
-            let imageToDisplay = UIImage(named: "\(image).png")
-            let imageView = UIImageView(image: imageToDisplay)
-            
-            let xCoordinate = CGFloat(image)*CGFloat(iconSize + 15)
-            contentWidth += CGFloat(iconSize + 15) //timeScrollView.frame.width
-            timeScrollView.addSubview(imageView)
-            //imageView.backgroundColor = UIColor.rgb(240, 240, 240)
-            //imageView.layer.cornerRadius = 25
-            imageView.frame = CGRect(x: xCoordinate + 15, y: (timeScrollView.frame.height / 2) - iconSize/2, width: iconSize, height: iconSize)
-        }
-        
-        timeScrollView.contentSize = CGSize(width: contentWidth + 15, height: timeScrollView.frame.height)
         
         setupScreen()
     }
@@ -99,10 +83,10 @@ final class ViewController: UIViewController {
         notchView.layer.masksToBounds = false
         
         notchView.centerXAnchor.constraint(equalTo: view.centerXAnchor).activate()
-        notchView.widthAnchor.constraint(equalToConstant: Constants.notchWidth).activate()
+        notchView.widthAnchor.constraint(equalToConstant: Constants.Notch.notchWidth).activate()
         notchView.heightAnchor.constraint(equalToConstant: 200).activate()
         notchViewBottomConstraint = notchView.bottomAnchor.constraint(equalTo: view.topAnchor,
-                                                                      constant: Constants.notchHeight)
+                                                                      constant: Constants.Notch.notchHeight)
         notchViewBottomConstraint.activate()
     }
     
@@ -114,19 +98,19 @@ final class ViewController: UIViewController {
         animatableView.frame = notchView.frame
         view.addSubview(animatableView)
         
-        notchViewBottomConstraint.constant = Constants.notchHeight
+        notchViewBottomConstraint.constant = Constants.Notch.notchHeight
         
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let height = flowLayout.itemSize.height + flowLayout.minimumInteritemSpacing
         
-        collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -Constants.maxScrollOffset)
+        collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -Constants.Notch.maxScrollOffset)
         
         func cvAnimation() {
             let itemSize = flowLayout.itemSize
-            animatableView.frame.size = CGSize(width: Constants.notchWidth,
-                                               height: (itemSize.height / itemSize.width) * Constants.notchWidth)
+            animatableView.frame.size = CGSize(width: Constants.Notch.notchWidth,
+                                               height: (itemSize.height / itemSize.width) * Constants.Notch.notchWidth)
             animatableView.image = UIImage.fromColor(view.backgroundColor?.withAlphaComponent(0.2) ?? UIColor.black)
-            animatableView.frame.origin.y = Constants.notchViewTopInset
+            animatableView.frame.origin.y = Constants.Notch.notchViewTopInset
             collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height * 0.5)
         }
         
@@ -222,12 +206,12 @@ extension ViewController: UITextViewDelegate {
 
 extension ViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.contentOffset.y = max(Constants.maxScrollOffset, scrollView.contentOffset.y)
-        notchViewBottomConstraint.constant = Constants.notchHeight - min(0, scrollView.contentOffset.y)
+        scrollView.contentOffset.y = max(Constants.Notch.maxScrollOffset, scrollView.contentOffset.y)
+        notchViewBottomConstraint.constant = Constants.Notch.notchHeight - min(0, scrollView.contentOffset.y)
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView.contentOffset.y <= Constants.maxScrollOffset {
+        if scrollView.contentOffset.y <= Constants.Notch.maxScrollOffset {
             animateView()
         }
     }

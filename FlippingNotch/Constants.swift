@@ -9,12 +9,18 @@
 import Foundation
 import UIKit
 
-struct Constants {
+enum Constants {
 
-    static let notchWidth: CGFloat = 209
-    // static let notchHeight: CGFloat = 26
-    static let notchHeight: CGFloat = 0
-    static let maxScrollOffset: CGFloat = -86
-    // static let notchViewTopInset: CGFloat = 40
-    static let notchViewTopInset: CGFloat = 0
+    enum Color {
+
+    }
+
+    enum Notch {
+        static let notchWidth: CGFloat = 209
+        // static let notchHeight: CGFloat = 26
+        static let notchHeight: CGFloat = 0
+        static let maxScrollOffset: CGFloat = -86
+        // static let notchViewTopInset: CGFloat = 40
+        static let notchViewTopInset: CGFloat = 0
+    }
 }
