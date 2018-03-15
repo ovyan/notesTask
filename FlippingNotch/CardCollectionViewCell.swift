@@ -35,15 +35,8 @@ final class CardCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Actions
 
-    @IBAction func redBtn(_ sender: UIButton) {
-        headerView.backgroundColor = UIColor.rgb(217, 56, 41)
-    }
-
-    @IBAction func yellowBtn(_ sender: UIButton) {
-        headerView.backgroundColor = UIColor.rgb(251, 199, 0)
-    }
-
-    @IBAction func greenBtn(_ sender: UIButton) {
+   
+    @IBAction func greenBtn(_ sender: UIButton) {//Actually a red btn
         headerView.backgroundColor = UIColor.rgb(59, 198, 81)
     }
 
