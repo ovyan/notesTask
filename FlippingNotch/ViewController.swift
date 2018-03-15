@@ -56,7 +56,17 @@ final class ViewController: UIViewController {
         visualEffectView.isHidden = false
         setTimeView.isHidden = false
         
+        timeScrollView.contentInset.right = 10
+        setupPopupButtons()
         addPopupButtons()
+    }
+    
+    private func setupPopupButtons() {
+        let buttons = popupStackView.subviews
+        buttons.forEach {
+            $0.layer.cornerRadius = 5
+            $0.clipsToBounds = true
+        }
     }
     
     private func addPopupButtons() {
