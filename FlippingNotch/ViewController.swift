@@ -7,6 +7,7 @@
 //
 
 import QuartzCore
+import RealmSwift
 import UIKit
 // import ChameleonFramework TODO
 

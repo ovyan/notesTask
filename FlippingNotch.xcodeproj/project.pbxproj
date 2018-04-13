@@ -14,6 +14,10 @@
 		B933197A2059D5A300C3ED33 /* EPType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319792059D5A300C3ED33 /* EPType.swift */; };
 		B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94FAF8120598A5900A962D5 /* UIColorExtension.swift */; };
 		B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */; };
+		B9BB1D3320811CF9007A0151 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3220811CF9007A0151 /* Realm.framework */; };
+		B9BB1D3620811D0A007A0151 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3420811D05007A0151 /* RealmSwift.framework */; };
+		B9BB1D3720811D0A007A0151 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3420811D05007A0151 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9BB1D3920811D0A007A0151 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3220811CF9007A0151 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */; };
 		DC2CC5E82010D199004DB704 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */; };
 		DC2CC5EA2010D1E1004DB704 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E92010D1E1004DB704 /* Constants.swift */; };
@@ -24,6 +28,21 @@
 		DC4D15AC200BDE240060BA1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4D15AA200BDE240060BA1A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B9BB1D3020811CDF007A0151 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B9BB1D3920811D0A007A0151 /* Realm.framework in Embed Frameworks */,
+				B9BB1D3720811D0A007A0151 /* RealmSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		27377753205AD10A00EE13E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9072F582059B0CF00137EFC /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
@@ -32,6 +51,8 @@
 		B93319792059D5A300C3ED33 /* EPType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPType.swift; sourceTree = "<group>"; };
 		B94FAF8120598A5900A962D5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9BB1D3220811CF9007A0151 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		B9BB1D3420811D05007A0151 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extention.swift"; sourceTree = "<group>"; };
 		DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 		DC2CC5E92010D1E1004DB704 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -49,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9BB1D3320811CF9007A0151 /* Realm.framework in Frameworks */,
+				B9BB1D3620811D0A007A0151 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +102,15 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		B9BB1D3120811CF8007A0151 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9BB1D3420811D05007A0151 /* RealmSwift.framework */,
+				B9BB1D3220811CF9007A0151 /* Realm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DC2CC5E42010D140004DB704 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +129,7 @@
 			children = (
 				DC4D15A0200BDE240060BA1A /* FlippingNotch */,
 				DC4D159F200BDE240060BA1A /* Products */,
+				B9BB1D3120811CF8007A0151 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +169,7 @@
 				DC4D159A200BDE240060BA1A /* Sources */,
 				DC4D159B200BDE240060BA1A /* Frameworks */,
 				DC4D159C200BDE240060BA1A /* Resources */,
+				B9BB1D3020811CDF007A0151 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,6 +383,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S77KJ672M8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FlippingNotch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -367,6 +405,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S77KJ672M8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FlippingNotch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
