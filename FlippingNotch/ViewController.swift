@@ -225,7 +225,7 @@ extension ViewController: UICollectionViewDataSource {
         cell.layer.masksToBounds = true
         cell.delegate = self
         
-        let item = datasource[indexPath.row]
+        let item = datasource.reversed()[indexPath.row]
         cell.model = item
         
         return cell
