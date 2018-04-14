@@ -244,6 +244,7 @@ extension ViewController: UICollectionViewDataSource {
         
         let item = datasource.reversed()[indexPath.row]
         cell.model = item
+        cell.textViewTapHandler = onTextViewTap
         
         setDoneOnKeyboard(for: cell)
         
@@ -259,6 +260,10 @@ extension ViewController: UICollectionViewDataSource {
         keyboardToolbar.items = [flexBarButton, doneBarButton]
         
         cell.noteTextView?.inputAccessoryView = keyboardToolbar
+    }
+    
+    private func onTextViewTap(_ model: TaskModel) {
+        lastEditedModel = model
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -285,17 +290,16 @@ extension ViewController: UITextViewDelegate {
         firstItemHeight += 8
         collectionView.collectionViewLayout.invalidateLayout()
         
-        guard let cell = textView.superview?.superview?.superview as? CardCollectionViewCell else { return }
-        
-        lastEditedModel = cell.model
         onTextChange(textView.text)
     }
     
     private func onTextChange(_ newText: String) {
-        if let model = lastEditedModel {
-            realm.write {
-                model.text = newText
-            }
+        assert(lastEditedModel != nil)
+        
+        guard let model = lastEditedModel else { return }
+        
+        realm.write {
+            model.text = newText
         }
     }
 }
