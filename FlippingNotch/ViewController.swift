@@ -202,6 +202,15 @@ final class ViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    private func addDoneButtonAboveKeyboard() {
+        
+    }
+    
+    @objc
+    func endInteraction() {
+        view.endEditing(true)
+    }
+    
     // MARK: - Actions
     
     @IBAction func doneBtn(_ sender: UIButton) {
@@ -236,7 +245,20 @@ extension ViewController: UICollectionViewDataSource {
         let item = datasource.reversed()[indexPath.row]
         cell.model = item
         
+        setDoneOnKeyboard(for: cell)
+        
         return cell
+    }
+    
+    func setDoneOnKeyboard(for cell: CardCollectionViewCell) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endInteraction))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        
+        cell.noteTextView?.inputAccessoryView = keyboardToolbar
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
