@@ -9,10 +9,10 @@
 import Foundation
 import RealmSwift
 
-public final class TaskModel: Object {
+final class TaskModel: Object {
     // MARK: - Members
 
-    @objc dynamic var taskId: String = UUID().uuidString
+    @objc dynamic var createdAt = Date()
     @objc dynamic var text: String = ""
     @objc dynamic var isImportant: Bool = false
 }

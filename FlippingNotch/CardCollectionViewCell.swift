@@ -12,9 +12,6 @@ protocol CardNoteDelegate: class {
     func didTapAddButton()
 }
 
-public typealias TapHandler = VoidBlock
-public typealias CardTapHandler = (TaskModel) -> Void
-
 final class CardCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
 
@@ -30,8 +27,6 @@ final class CardCollectionViewCell: UICollectionViewCell {
 
     weak var delegate: CardNoteDelegate?
 
-    public var textViewTapHandler: CardTapHandler?
-
     // MARK: - Setters
 
     var model: TaskModel? {
@@ -39,25 +34,6 @@ final class CardCollectionViewCell: UICollectionViewCell {
             guard let model = model else { return }
             onModelSet(model)
         }
-    }
-
-    // MARK: - Tap Handler
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        setTextViewTapHandler()
-    }
-
-    private func setTextViewTapHandler() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(onTextViewTap(_:)))
-        noteTextView!.addGestureRecognizer(tap)
-    }
-
-    @objc
-    private func onTextViewTap(_ sender: UITapGestureRecognizer) {
-        noteTextView.becomeFirstResponder()
-        textViewTapHandler?(model!)
     }
 
     // MARK: - Internal

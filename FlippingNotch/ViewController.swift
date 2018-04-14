@@ -188,6 +188,14 @@ final class ViewController: UIViewController {
         
         lastEditedModel = newNote
         collectionView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: selectNewNote)
+    }
+    
+    private func selectNewNote() {
+        guard let newCells = collectionView.visibleCells as? [CardCollectionViewCell] else { return }
+        let latestCell = newCells.sorted { $0.model!.createdAt > $1.model!.createdAt }.first
+        latestCell?.noteTextView.becomeFirstResponder()
     }
     
     private func onDatasourceChange(_ newItems: [NoteViewModel]) {
@@ -227,13 +235,8 @@ extension ViewController: UICollectionViewDataSource {
         
         let item = datasource.reversed()[indexPath.row]
         cell.model = item
-        cell.textViewTapHandler = onTextViewTap
         
         return cell
-    }
-    
-    private func onTextViewTap(_ model: TaskModel) {
-        lastEditedModel = model
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
