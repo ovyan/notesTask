@@ -274,23 +274,24 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 {
-            return CGSize(width: 360, height: firstItemHeight)
-        }
+        let baseSize = CGSize(width: 360, height: 210)
         
-        return CGSize(width: 360, height: 210)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell, let textView = cell.noteTextView else {
+            return baseSize
+        }
+        let intrinsicHeight = textView.intrinsicContentSize.height
+        
+        return intrinsicHeight > textView.frame.height ? CGSize(width: 360, height: intrinsicHeight) : baseSize
     }
 }
 
 extension ViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        let oldFrame = textView.frame
-        let newFrame = oldFrame.insetBy(dx: 0, dy: 16)
-        
-        firstItemHeight += 8
-        collectionView.collectionViewLayout.invalidateLayout()
-        
         onTextChange(textView.text)
+        
+        if textView.frame.height < textView.intrinsicContentSize.height {
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
     
     private func onTextChange(_ newText: String) {
