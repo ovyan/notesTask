@@ -27,15 +27,21 @@ final class ViewController: UIViewController {
     
     // MARK: Fileprivates
     
-    fileprivate var notchView = UIView()
-    fileprivate var notchViewBottomConstraint: NSLayoutConstraint!
-    fileprivate var isPulling: Bool = false
-    
-    // MARK: Overrides
+    private var notchView = UIView()
+    private var notchViewBottomConstraint: NSLayoutConstraint!
+    private var isPulling: Bool = false
     
     private var effect: UIVisualEffect!
     
-    var contentWidth: CGFloat = 0.0
+    private var contentWidth: CGFloat = 0.0
+    
+    private var firstItemHeight: CGFloat = 270
+    
+    // MARK: - Members
+    
+    private let realm = RealmService()
+    
+    // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +103,9 @@ final class ViewController: UIViewController {
     
     // MARK: - Members
     
-    private var datasource = NotesMockDataProvider.notes(2) { didSet { onDatasourceChange(datasource) } }
+    private var datasource: Results<TaskModel> {
+        return realm.getAll()
+    }
     
     // MARK: UI
     
@@ -173,8 +181,13 @@ final class ViewController: UIViewController {
     }
     
     private func appendNote() {
-        let newNote = NotesMockDataProvider.note()
-        datasource.insert(newNote, at: 0)
+        // let newNote = NotesMockDataProvider.note()
+        // datasource.insert(newNote, at: 0)
+        let newNote = TaskModel()
+        realm.save(newNote)
+        
+        lastEditedModel = newNote
+        collectionView.reloadData()
     }
     
     private func onDatasourceChange(_ newItems: [NoteViewModel]) {
@@ -191,13 +204,19 @@ final class ViewController: UIViewController {
         let idx = abs(sender.tag) - 4
         print("did tap on \(idx)!")
     }
+    
+    // ===
+    
+    private var lastEditedModel: TaskModel?
 }
 
 // MARK: UICollectionViewDataSource
 
 extension ViewController: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { return datasource.count }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return datasource.count
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardCollectionViewCell
@@ -207,14 +226,16 @@ extension ViewController: UICollectionViewDataSource {
         cell.delegate = self
         
         let item = datasource[indexPath.row]
-        cell.title = item.title
-        cell.text = item.text
+        cell.model = item
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else { return }
+        lastEditedModel = cell.model
+    }
 }
-
-var firstItemHeight: CGFloat = 270
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -233,6 +254,19 @@ extension ViewController: UITextViewDelegate {
         
         firstItemHeight += 8
         collectionView.collectionViewLayout.invalidateLayout()
+        
+        guard let cell = textView.superview?.superview?.superview as? CardCollectionViewCell else { return }
+        
+        lastEditedModel = cell.model
+        onTextChange(textView.text)
+    }
+    
+    private func onTextChange(_ newText: String) {
+        if let model = lastEditedModel {
+            realm.write {
+                model.text = newText
+            }
+        }
     }
 }
 

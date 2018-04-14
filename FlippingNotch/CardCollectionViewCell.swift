@@ -23,20 +23,30 @@ final class CardCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var noteTimeLeftLabel: UILabel!
 
-    // MARK: - Setters
-
-    var title: String? { didSet { noteTitleLabel.text = title } }
-
-    var text: String? { didSet { noteTextView.text = text ?? "" } }
-
     // MARK: - Members
 
     weak var delegate: CardNoteDelegate?
 
+    // MARK: - Setters
+
+    var model: TaskModel? {
+        didSet {
+            guard let model = model else { return }
+            onModelSet(model)
+        }
+    }
+
+    // MARK: - Internal
+
+    private func onModelSet(_ model: TaskModel) {
+        noteTitleLabel.text = "Some title"
+        noteTextView.text = model.text
+        headerView.backgroundColor = model.isImportant ? .red : .green
+    }
+
     // MARK: - Actions
 
-   
-    @IBAction func greenBtn(_ sender: UIButton) {//Actually a red btn
+    @IBAction func greenBtn(_ sender: UIButton) { // Actually a red btn
         headerView.backgroundColor = UIColor.rgb(59, 198, 81)
     }
 
