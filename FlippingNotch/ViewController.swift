@@ -227,8 +227,13 @@ extension ViewController: UICollectionViewDataSource {
         
         let item = datasource.reversed()[indexPath.row]
         cell.model = item
+        cell.textViewTapHandler = onTextViewTap
         
         return cell
+    }
+    
+    private func onTextViewTap(_ model: TaskModel) {
+        lastEditedModel = model
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

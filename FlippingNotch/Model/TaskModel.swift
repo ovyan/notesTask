@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class TaskModel: Object {
+public final class TaskModel: Object {
     // MARK: - Members
 
     @objc dynamic var taskId: String = UUID().uuidString
