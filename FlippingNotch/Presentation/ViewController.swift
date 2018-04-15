@@ -273,10 +273,10 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let baseSize = CGSize(width: 360, height: 210)
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell, let textView = cell.noteTextView else {
-            return baseSize
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else {
+            let margin = collectionView.layoutMargins
+            
+            return CGSize(width: collectionView.frame.width - margin.left - margin.right, height: 210)
         }
         
         return cell.intrinsicContentSize
@@ -291,16 +291,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         let newFrame = CGRect(origin: origin, size: cell.intrinsicContentSize)
         if newFrame != frame {
             collectionView.collectionViewLayout.invalidateLayout()
-            
-            /*
-             cell.frame = newFrame
-             
-             collectionView.layoutIfNeeded()
-             
-             let delta = frame.height - newFrame.height
-             
-             collectionView.contentInset = UIEdgeInsetsMake(0, 0, -delta, 0)
-             */
         }
     }
 }
