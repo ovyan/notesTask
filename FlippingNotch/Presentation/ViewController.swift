@@ -279,14 +279,29 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
             return baseSize
         }
         
-        let intrinsicHeight = cell.intrinsicContentSize.height
-        let newHeight = (90 + intrinsicHeight).leftBound(to: 210)
-        
-        return intrinsicHeight > textView.frame.height - textView.frame.origin.y ? CGSize(width: 360, height: newHeight) : baseSize
+        return cell.intrinsicContentSize
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? CardCollectionViewCell else { return }
         
+        let frame = cell.frame
+        let origin = frame.origin
+        
+        let newFrame = CGRect(origin: origin, size: cell.intrinsicContentSize)
+        if newFrame != frame {
+            collectionView.collectionViewLayout.invalidateLayout()
+            
+            /*
+             cell.frame = newFrame
+             
+             collectionView.layoutIfNeeded()
+             
+             let delta = frame.height - newFrame.height
+             
+             collectionView.contentInset = UIEdgeInsetsMake(0, 0, -delta, 0)
+             */
+        }
     }
 }
 

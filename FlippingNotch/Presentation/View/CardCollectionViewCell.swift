@@ -41,8 +41,8 @@ public final class CardCollectionViewCell: UICollectionViewCell {
         let cellBaseHeight: CGFloat = 90
         let textViewHeight = noteTextView.intrinsicContentSize.height.leftBound(to: textViewBaseHeight)
         let baseWidth = frame.width
-        
-        let size = CGSize.init(width: baseWidth, height: cellBaseHeight + textViewHeight)
+
+        return CGSize(width: baseWidth, height: cellBaseHeight + textViewHeight)
     }
 
     // MARK: - Members
