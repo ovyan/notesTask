@@ -39,7 +39,7 @@ final class ViewController: UIViewController {
     
     // MARK: - Members
     
-    private let realm = RealmService()
+    private let realm = RealmService.shared
     
     // MARK: Overrides
     
@@ -185,8 +185,6 @@ final class ViewController: UIViewController {
         // datasource.insert(newNote, at: 0)
         let newNote = TaskModel()
         realm.save(newNote)
-        
-        lastEditedModel = newNote
         collectionView.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: selectNewNote)
@@ -221,10 +219,6 @@ final class ViewController: UIViewController {
         let idx = abs(sender.tag) - 4
         print("did tap on \(idx)!")
     }
-    
-    // ===
-    
-    private var lastEditedModel: TaskModel?
 }
 
 // MARK: UICollectionViewDataSource
@@ -240,11 +234,10 @@ extension ViewController: UICollectionViewDataSource {
         cell.headerView.backgroundColor = UIColor.rgb(251, 199, 0)
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
-        cell.delegate = self
+        cell.interactionDelegate = self
         
         let item = datasource.reversed()[indexPath.row]
         cell.model = item
-        cell.textViewTapHandler = onTextViewTap
         
         setDoneOnKeyboard(for: cell)
         
@@ -262,13 +255,8 @@ extension ViewController: UICollectionViewDataSource {
         cell.noteTextView?.inputAccessoryView = keyboardToolbar
     }
     
-    private func onTextViewTap(_ model: TaskModel) {
-        lastEditedModel = model
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else { return }
-        lastEditedModel = cell.model
     }
 }
 
@@ -279,29 +267,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell, let textView = cell.noteTextView else {
             return baseSize
         }
-        let intrinsicHeight = textView.intrinsicContentSize.height
+        
+        let intrinsicHeight = cell.intrinsicContentSize.height
         
         return intrinsicHeight > textView.frame.height ? CGSize(width: 360, height: intrinsicHeight) : baseSize
-    }
-}
-
-extension ViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        onTextChange(textView.text)
-        
-        if textView.frame.height < textView.intrinsicContentSize.height {
-            collectionView.collectionViewLayout.invalidateLayout()
-        }
-    }
-    
-    private func onTextChange(_ newText: String) {
-        assert(lastEditedModel != nil)
-        
-        guard let model = lastEditedModel else { return }
-        
-        realm.write {
-            model.text = newText
-        }
     }
 }
 
@@ -320,8 +289,13 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
-extension ViewController: CardNoteDelegate {
+extension ViewController: NoteInteractionDelegate {
     func didTapAddButton() {
         showModal()
+    }
+    
+    func shouldInvalidateLayout() {
+        // collectionView.invalidateIntrinsicContentSize()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }

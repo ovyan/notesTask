@@ -12,13 +12,15 @@ import RealmSwift
 public final class RealmService {
     // MARK: - Members
 
+    public static let shared = RealmService()
+
     public var realm: Realm {
         return try! Realm()
     }
 
     // MARK: - Interface
 
-    public func write(_ block: () -> Void) {
+    public func update(_ block: () -> Void) {
         try? realm.write(block)
     }
 
@@ -34,7 +36,7 @@ public final class RealmService {
 
     // MARK: - Init
 
-    public init() {
+    private init() {
         print("realm located at: \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
 }

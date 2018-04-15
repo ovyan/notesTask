@@ -85,6 +85,8 @@
 		B9072F562059B0A400137EFC /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DC4D15A3200BDE240060BA1A /* ViewController.swift */,
+				B992E70D20837478008902CA /* View */,
 				B9072F572059B0B700137EFC /* Model */,
 			);
 			path = Presentation;
@@ -105,6 +107,14 @@
 				B9BB1D3B20811DCC007A0151 /* RealmService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B992E70D20837478008902CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B9BB1D3120811CF8007A0151 /* Frameworks */ = {
@@ -161,14 +171,12 @@
 				B9072F5A2059B6FF00137EFC /* Service */,
 				B9072F562059B0A400137EFC /* Presentation */,
 				DC4D15A1200BDE240060BA1A /* AppDelegate.swift */,
-				DC4D15A3200BDE240060BA1A /* ViewController.swift */,
 				DC2CC5E92010D1E1004DB704 /* Constants.swift */,
 				DC2CC5E42010D140004DB704 /* Extentions */,
 				DC4D15A5200BDE240060BA1A /* Main.storyboard */,
 				DC4D15AA200BDE240060BA1A /* LaunchScreen.storyboard */,
 				DC4D15AD200BDE240060BA1A /* Info.plist */,
 				27377753205AD10A00EE13E7 /* Assets.xcassets */,
-				B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */,
 			);
 			path = FlippingNotch;
 			sourceTree = "<group>";
