@@ -9,21 +9,24 @@
 import Foundation
 import RealmSwift
 
-protocol RealmModel: class {
-    var pKey: Int { get }
+protocol AnyRealmModel: class {
+    var id: Int { get }
 }
 
-public final class TaskModel: Object, RealmModel {
+open class RealmModel: Object {
+    @objc dynamic var id = Int(arc4random())
+
+    open override class func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+public final class TaskModel: RealmModel {
     // MARK: - Members
 
-    @objc dynamic var pKey = Int(arc4random())
     @objc dynamic var createdAt = Date()
     @objc dynamic var text: String = ""
     @objc dynamic var isImportant: Bool = false
-
-    public override class func primaryKey() -> String? {
-        return "pKey"
-    }
 }
 
 extension TaskModel {
