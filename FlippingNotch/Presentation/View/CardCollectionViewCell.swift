@@ -37,7 +37,12 @@ public final class CardCollectionViewCell: UICollectionViewCell {
     }
 
     public override var intrinsicContentSize: CGSize {
-        return noteTextView.intrinsicContentSize
+        let textViewBaseHeight: CGFloat = 120
+        let cellBaseHeight: CGFloat = 90
+        let textViewHeight = noteTextView.intrinsicContentSize.height.leftBound(to: textViewBaseHeight)
+        let baseWidth = frame.width
+        
+        let size = CGSize.init(width: baseWidth, height: cellBaseHeight + textViewHeight)
     }
 
     // MARK: - Members
@@ -66,8 +71,10 @@ public final class CardCollectionViewCell: UICollectionViewCell {
         }
 
         if textView.frame.height < textView.intrinsicContentSize.height {
-            interactionDelegate?.shouldInvalidateLayout()
         }
+        else if textView.bounds.height > textView.intrinsicContentSize.height {
+        }
+        interactionDelegate?.shouldInvalidateLayout()
     }
 
     // MARK: - Internal
@@ -91,6 +98,10 @@ public final class CardCollectionViewCell: UICollectionViewCell {
 
 extension CardCollectionViewCell: UITextViewDelegate {
     public func textViewDidChange(_ textView: UITextView) {
+        onTextViewChange(textView)
+    }
+
+    public func textViewDidBeginEditing(_ textView: UITextView) {
         onTextViewChange(textView)
     }
 

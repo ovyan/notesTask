@@ -219,6 +219,12 @@ final class ViewController: UIViewController {
         let idx = abs(sender.tag) - 4
         print("did tap on \(idx)!")
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -239,12 +245,17 @@ extension ViewController: UICollectionViewDataSource {
         let item = datasource.reversed()[indexPath.row]
         cell.model = item
         
+        let origin = cell.frame.origin
+        // let size = CGSize.init(width: 360, height: <#T##CGFloat#>)
+        
+        // cell.frame = CGRect(origin: origin, size: cell.intrinsicContentSize)
+        
         setDoneOnKeyboard(for: cell)
         
         return cell
     }
     
-    func setDoneOnKeyboard(for cell: CardCollectionViewCell) {
+    private func setDoneOnKeyboard(for cell: CardCollectionViewCell) {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         
@@ -269,8 +280,20 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         }
         
         let intrinsicHeight = cell.intrinsicContentSize.height
+        let newHeight = (90 + intrinsicHeight).leftBound(to: 210)
         
-        return intrinsicHeight > textView.frame.height ? CGSize(width: 360, height: intrinsicHeight) : baseSize
+        return intrinsicHeight > textView.frame.height - textView.frame.origin.y ? CGSize(width: 360, height: newHeight) : baseSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
+}
+
+public extension CGFloat {
+    
+    public func leftBound(to value: CGFloat) -> CGFloat {
+        return self < value ? value : self
     }
 }
 
