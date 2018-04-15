@@ -72,14 +72,11 @@ public final class CardCollectionViewCell: UICollectionViewCell {
     private func onTextViewChange(_ textView: UITextView) {
         let newText = textView.text
         if oldText != newText {
-            RealmService.shared.update {
-                model?.text = textView.text
-            }
+            updateModel()
         }
 
         let newSize = intrinsicContentSize
         if oldFrameSize != newSize {
-            print("invalidating")
             interactionDelegate?.shouldInvalidateLayout()
         }
 
@@ -93,6 +90,14 @@ public final class CardCollectionViewCell: UICollectionViewCell {
         noteTitleLabel.text = "Some title"
         noteTextView.text = model.text
         headerView.backgroundColor = model.isImportant ? .red : .green
+    }
+
+    private func updateModel() {
+        let text: String = noteTextView.text
+
+        RealmService.shared.update(model!) { model in
+            model.text = text
+        }
     }
 
     // MARK: - Actions
@@ -112,7 +117,7 @@ extension CardCollectionViewCell: UITextViewDelegate {
     }
 
     public func textViewDidBeginEditing(_ textView: UITextView) {
-        onTextViewChange(textView)
+        // onTextViewChange(textView)
     }
 
     public func textViewDidEndEditing(_ textView: UITextView) {

@@ -20,8 +20,22 @@ public final class RealmService {
 
     // MARK: - Interface
 
-    public func update(_ block: () -> Void) {
-        try? realm.write(block)
+    public func update<Model: Object>(_ model: Model, _ block: @escaping (_ model: Model) -> Void) {
+        let ref = ThreadSafeReference(to: model)
+        queue.async {
+            let realm = self.realm
+            
+            guard let resolved = realm.resolve(ref) else { return }
+            try? realm.write {
+                block(resolved)
+            }
+        }
+    }
+
+    public func update(_ block: @escaping () -> Void) {
+        queue.async {
+            try? self.realm.write(block)
+        }
     }
 
     public func save<Model: Object>(_ object: Model) {
@@ -33,6 +47,10 @@ public final class RealmService {
     public func getAll<Model: Object>() -> Results<Model> {
         return realm.objects(Model.self)
     }
+
+    // MARK: - Internal
+
+    private let queue = DispatchQueue(label: "service.realm.background", qos: .utility, attributes: .concurrent)
 
     // MARK: - Init
 

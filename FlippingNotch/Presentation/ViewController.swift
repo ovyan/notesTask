@@ -245,11 +245,6 @@ extension ViewController: UICollectionViewDataSource {
         let item = datasource.reversed()[indexPath.row]
         cell.model = item
         
-        let origin = cell.frame.origin
-        // let size = CGSize.init(width: 360, height: <#T##CGFloat#>)
-        
-        // cell.frame = CGRect(origin: origin, size: cell.intrinsicContentSize)
-        
         setDoneOnKeyboard(for: cell)
         
         return cell
@@ -264,10 +259,6 @@ extension ViewController: UICollectionViewDataSource {
         keyboardToolbar.items = [flexBarButton, doneBarButton]
         
         cell.noteTextView?.inputAccessoryView = keyboardToolbar
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else { return }
     }
 }
 
