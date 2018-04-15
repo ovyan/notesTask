@@ -49,6 +49,10 @@ public final class CardCollectionViewCell: UICollectionViewCell {
 
     public weak var interactionDelegate: NoteInteractionDelegate?
 
+    private var oldFrameSize: CGSize?
+
+    private var oldText: String?
+
     // MARK: - Setters
 
     var model: TaskModel? {
@@ -66,15 +70,21 @@ public final class CardCollectionViewCell: UICollectionViewCell {
     }
 
     private func onTextViewChange(_ textView: UITextView) {
-        RealmService.shared.update {
-            model?.text = textView.text
+        let newText = textView.text
+        if oldText != newText {
+            RealmService.shared.update {
+                model?.text = textView.text
+            }
         }
 
-        if textView.frame.height < textView.intrinsicContentSize.height {
+        let newSize = intrinsicContentSize
+        if oldFrameSize != newSize {
+            print("invalidating")
+            interactionDelegate?.shouldInvalidateLayout()
         }
-        else if textView.bounds.height > textView.intrinsicContentSize.height {
-        }
-        interactionDelegate?.shouldInvalidateLayout()
+
+        oldText = newText
+        oldFrameSize = newSize
     }
 
     // MARK: - Internal
