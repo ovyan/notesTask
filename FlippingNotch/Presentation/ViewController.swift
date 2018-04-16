@@ -41,6 +41,8 @@ final class ViewController: UIViewController {
     
     private let realm = RealmService.shared
     
+    private var datasource: Results<TaskModel> = RealmService.shared.getAll()
+    
     // MARK: Overrides
     
     override func viewDidLoad() {
@@ -100,12 +102,6 @@ final class ViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-    
-    // MARK: - Members
-    
-    private var datasource: Results<TaskModel> {
-        return realm.getAll()
-    }
     
     // MARK: UI
     
@@ -185,7 +181,8 @@ final class ViewController: UIViewController {
         // datasource.insert(newNote, at: 0)
         let newNote = TaskModel()
         realm.save(newNote)
-        collectionView.reloadData()
+        // collectionView.reloadData()
+        collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: selectNewNote)
     }
