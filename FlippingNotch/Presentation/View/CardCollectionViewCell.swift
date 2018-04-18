@@ -85,7 +85,7 @@ public final class CardCollectionViewCell: UICollectionViewCell {
     // MARK: - Internal
 
     private func updateView(with model: TaskModel) {
-        noteTitleLabel.text = "Some title"
+        //noteTitleLabel.text = "Some title"
         noteTextView.text = model.text
         headerView.backgroundColor = model.isImportant ? .red : .green
     }

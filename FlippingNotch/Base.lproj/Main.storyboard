@@ -256,18 +256,8 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUg-OG-O3Q" userLabel="Header">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="6"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW NOTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ie-E7-zsg">
-                                                                    <rect key="frame" x="16" y="14" width="69" height="16"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstItem="4ie-E7-zsg" firstAttribute="leading" secondItem="zUg-OG-O3Q" secondAttribute="leading" constant="16" id="10s-Wm-o47"/>
-                                                                <constraint firstItem="4ie-E7-zsg" firstAttribute="centerY" secondItem="zUg-OG-O3Q" secondAttribute="centerY" constant="19" id="VJ8-BP-N0k"/>
                                                                 <constraint firstAttribute="height" constant="6" id="ZN0-AS-WKQ"/>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="6" id="wzH-5F-DeF"/>
                                                             </constraints>
@@ -374,7 +364,6 @@
                                             <outlet property="headerView" destination="zUg-OG-O3Q" id="92j-zR-gLx"/>
                                             <outlet property="noteTextView" destination="Z1x-wq-7UG" id="gml-Kn-9Ue"/>
                                             <outlet property="noteTimeLeftLabel" destination="KQe-fL-VH5" id="CVO-qW-giD"/>
-                                            <outlet property="noteTitleLabel" destination="4ie-E7-zsg" id="vTg-PI-J4Z"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
