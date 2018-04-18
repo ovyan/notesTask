@@ -273,11 +273,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? CardCollectionViewCell else { return }
         
-        let frame = cell.frame
-        let origin = frame.origin
+        let size = cell.frame.size
+        let newSize = cell.intrinsicContentSize
         
-        let newFrame = CGRect(origin: origin, size: cell.intrinsicContentSize)
-        if newFrame != frame {
+        if newSize != size {
             collectionView.collectionViewLayout.invalidateLayout()
         }
     }
