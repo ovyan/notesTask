@@ -103,7 +103,7 @@ public final class CardCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
 
     @IBAction func greenBtn(_ sender: UIButton) { // Actually a red btn
-        headerView.backgroundColor = UIColor.rgb(59, 198, 81)
+        headerView.backgroundColor = UIColor.rgb(217, 56, 41)
     }
 
     @IBAction func watchBtnTap(_ sender: UIButton) {

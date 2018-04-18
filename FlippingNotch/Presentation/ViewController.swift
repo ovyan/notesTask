@@ -234,8 +234,9 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardCollectionViewCell
-        cell.headerView.backgroundColor = UIColor.rgb(251, 199, 0)
-        cell.layer.cornerRadius = 10
+        //cell.headerView.backgroundColor = UIColor.rgb(251, 199, 0)
+        cell.headerView.backgroundColor = UIColor.rgb(255, 255, 255)
+        cell.layer.cornerRadius = 8 //10
         cell.layer.masksToBounds = true
         cell.interactionDelegate = self
         
