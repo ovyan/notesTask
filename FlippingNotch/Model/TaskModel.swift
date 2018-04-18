@@ -13,19 +13,11 @@ protocol AnyRealmModel: class {
     var id: Int { get }
 }
 
-open class RealmModel: Object {
-    @objc dynamic var id = Int(arc4random())
-
-    open override class func primaryKey() -> String? {
-        return "id"
-    }
-}
-
 public final class TaskModel: RealmModel {
     // MARK: - Members
 
-    @objc dynamic var createdAt = Date()
     @objc dynamic var text: String = ""
+    @objc dynamic var date = Date()
     @objc dynamic var isImportant: Bool = false
 }
 

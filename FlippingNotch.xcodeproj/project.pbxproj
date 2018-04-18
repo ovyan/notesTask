@@ -14,6 +14,8 @@
 		B933197A2059D5A300C3ED33 /* EPType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319792059D5A300C3ED33 /* EPType.swift */; };
 		B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94FAF8120598A5900A962D5 /* UIColorExtension.swift */; };
 		B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */; };
+		B9B7DDC22087A3FC001681E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7DDC12087A3FB001681E6 /* Constants.swift */; };
+		B9B7DDC82087A517001681E6 /* Realm+Increment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7DDC72087A516001681E6 /* Realm+Increment.swift */; };
 		B9BB1D3320811CF9007A0151 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3220811CF9007A0151 /* Realm.framework */; };
 		B9BB1D3620811D0A007A0151 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3420811D05007A0151 /* RealmSwift.framework */; };
 		B9BB1D3720811D0A007A0151 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3420811D05007A0151 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -22,7 +24,6 @@
 		B9BB1D3F20811F57007A0151 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB1D3E20811F57007A0151 /* TaskModel.swift */; };
 		DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */; };
 		DC2CC5E82010D199004DB704 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */; };
-		DC2CC5EA2010D1E1004DB704 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E92010D1E1004DB704 /* Constants.swift */; };
 		DC2CC5EC201107D8004DB704 /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */; };
 		DC4D15A2200BDE240060BA1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D15A1200BDE240060BA1A /* AppDelegate.swift */; };
 		DC4D15A4200BDE240060BA1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D15A3200BDE240060BA1A /* ViewController.swift */; };
@@ -53,13 +54,14 @@
 		B93319792059D5A300C3ED33 /* EPType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPType.swift; sourceTree = "<group>"; };
 		B94FAF8120598A5900A962D5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		B9B7DDC12087A3FB001681E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B9B7DDC72087A516001681E6 /* Realm+Increment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Increment.swift"; sourceTree = "<group>"; };
 		B9BB1D3220811CF9007A0151 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		B9BB1D3420811D05007A0151 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		B9BB1D3B20811DCC007A0151 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		B9BB1D3E20811F57007A0151 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extention.swift"; sourceTree = "<group>"; };
 		DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
-		DC2CC5E92010D1E1004DB704 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 		DC4D159E200BDE240060BA1A /* FlippingNotch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlippingNotch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4D15A1200BDE240060BA1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,50 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B9B7DDC02087A3F3001681E6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B9B7DDC12087A3FB001681E6 /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B9B7DDC32087A480001681E6 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				B9B7DDC52087A48E001681E6 /* UIColor */,
+				B9B7DDC42087A483001681E6 /* UIView */,
+				DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */,
+				DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		B9B7DDC42087A483001681E6 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				B93319772059D50D00C3ED33 /* UIView+Animate.swift */,
+				DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		B9B7DDC52087A48E001681E6 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				B94FAF8120598A5900A962D5 /* UIColorExtension.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		B9B7DDC62087A50C001681E6 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				B9B7DDC72087A516001681E6 /* Realm+Increment.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		B9BB1D3120811CF8007A0151 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,12 +183,9 @@
 		DC2CC5E42010D140004DB704 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				B9B7DDC62087A50C001681E6 /* Realm */,
+				B9B7DDC32087A480001681E6 /* UIKit */,
 				B93319792059D5A300C3ED33 /* EPType.swift */,
-				DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */,
-				B94FAF8120598A5900A962D5 /* UIColorExtension.swift */,
-				DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */,
-				B93319772059D50D00C3ED33 /* UIView+Animate.swift */,
-				DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -167,13 +210,13 @@
 		DC4D15A0200BDE240060BA1A /* FlippingNotch */ = {
 			isa = PBXGroup;
 			children = (
+				B9B7DDC02087A3F3001681E6 /* Common */,
 				DC2CC5E42010D140004DB704 /* Extentions */,
 				B9BB1D3D20811E22007A0151 /* Model */,
 				B9072F562059B0A400137EFC /* Presentation */,
 				B9072F5A2059B6FF00137EFC /* Service */,
 				DC4D15A1200BDE240060BA1A /* AppDelegate.swift */,
 				27377753205AD10A00EE13E7 /* Assets.xcassets */,
-				DC2CC5E92010D1E1004DB704 /* Constants.swift */,
 				DC4D15AD200BDE240060BA1A /* Info.plist */,
 				DC4D15AA200BDE240060BA1A /* LaunchScreen.storyboard */,
 				DC4D15A5200BDE240060BA1A /* Main.storyboard */,
@@ -255,10 +298,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9072F5C2059B70D00137EFC /* NotesMockDataProvider.swift in Sources */,
-				DC2CC5EA2010D1E1004DB704 /* Constants.swift in Sources */,
 				DC2CC5E82010D199004DB704 /* UIImage+Extention.swift in Sources */,
 				B9072F592059B0CF00137EFC /* NoteViewModel.swift in Sources */,
 				DC4D15A4200BDE240060BA1A /* ViewController.swift in Sources */,
+				B9B7DDC22087A3FC001681E6 /* Constants.swift in Sources */,
+				B9B7DDC82087A517001681E6 /* Realm+Increment.swift in Sources */,
 				B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */,
 				B9BB1D3F20811F57007A0151 /* TaskModel.swift in Sources */,
 				B93319782059D50D00C3ED33 /* UIView+Animate.swift in Sources */,

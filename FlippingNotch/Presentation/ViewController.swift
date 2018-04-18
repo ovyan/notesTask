@@ -41,7 +41,7 @@ final class ViewController: UIViewController {
     
     private let realm = RealmService.shared
     
-    private var datasource: Results<TaskModel> = RealmService.shared.getAll()
+    private var datasource: Results<TaskModel> = RealmService.shared.fetchAll()
     
     // MARK: Overrides
     
@@ -189,7 +189,7 @@ final class ViewController: UIViewController {
     
     private func selectNewNote() {
         guard let newCells = collectionView.visibleCells as? [CardCollectionViewCell] else { return }
-        let latestCell = newCells.sorted { $0.model!.createdAt > $1.model!.createdAt }.first
+        let latestCell = newCells.sorted { $0.model!.date > $1.model!.date }.first
         latestCell?.noteTextView.becomeFirstResponder()
     }
     
@@ -265,7 +265,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else {
             let margin = collectionView.layoutMargins
             
-            return CGSize(width: collectionView.frame.width - margin.left - margin.right, height: 210)
+            return CGSize(width: collectionView.frame.width - margin.left - margin.right, height: CUI.Feed.Card.height)
         }
         
         return cell.intrinsicContentSize
