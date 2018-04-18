@@ -235,7 +235,7 @@
                                 <viewLayoutGuide key="safeArea" id="Z7c-Fk-tJg"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBN-KV-eYb">
-                                <rect key="frame" x="0.0" y="27" width="375" height="631"/>
+                                <rect key="frame" x="0.0" y="27" width="375" height="640"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0zZ-Di-Oky">
                                     <size key="itemSize" width="343" height="119"/>
@@ -384,7 +384,7 @@
                             <constraint firstItem="KBN-KV-eYb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="dRM-vX-1xf"/>
                             <constraint firstItem="bsm-sF-pXx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ka2-md-U30"/>
                             <constraint firstItem="4kr-ig-WIP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="p1m-NC-dEz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KBN-KV-eYb" secondAttribute="bottom" constant="9" id="yyP-B5-OCH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="KBN-KV-eYb" secondAttribute="bottom" id="yyP-B5-OCH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
