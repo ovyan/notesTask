@@ -37,7 +37,7 @@ final class ViewController: UIViewController {
     
     private let realm = RealmService.shared
     
-    private var datasource: [TaskModel] = []
+    private let datasource: Results<TaskModel> = RealmService.shared.fetchAll()
     
     // MARK: Overrides
     
@@ -45,12 +45,6 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupScreen()
-        fetchData()
-    }
-    
-    private func fetchData() {
-        let fetched: Results<TaskModel> = RealmService.shared.fetchAll()
-        datasource = Array(fetched)
     }
     
     private func setupScreen() {
@@ -109,7 +103,6 @@ final class ViewController: UIViewController {
     
     private func appendNote() {
         let newNote = TaskModel()
-        datasource.append(newNote)
         realm.save(newNote)
         
         // collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
@@ -280,14 +273,20 @@ extension ViewController {
             let itemSize = flowLayout.itemSize
             animatableView.frame.size = CGSize(width: Constants.Notch.notchWidth,
                                                height: (itemSize.height / itemSize.width) * Constants.Notch.notchWidth)
+            
             animatableView.image = UIImage.fromColor(view.backgroundColor?.withAlphaComponent(0.2) ?? UIColor.black)
+            
             animatableView.frame.origin.y = Constants.Notch.notchViewTopInset
+            
             collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height * 0.5)
         }
         
         func cvAnimationCompletion(_ param: Bool) {
-            let item = collectionView.cellForItem(at: IndexPath(row: 0, section: 0))
+            let item = collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? TaskCardCell
+            let oldText = item?.noteTextView.text
+            item?.noteTextView.text = ""
             animatableView.image = item?.snapshotImage()
+            item?.noteTextView.text = oldText
             
             UIView.transition(with: animatableView,
                               duration: 0.2,
