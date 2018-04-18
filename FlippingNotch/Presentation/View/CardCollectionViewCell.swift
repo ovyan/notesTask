@@ -95,7 +95,7 @@ public final class CardCollectionViewCell: UICollectionViewCell {
     private func updateModel() {
         let text: String = noteTextView.text
 
-        RealmService.shared.updateAsync(model!) { model in
+        RealmService.shared.perform { [model = model!] in
             model.text = text
         }
     }
