@@ -99,6 +99,10 @@ public final class TaskCardCell: UICollectionViewCell {
     // MARK: - Actions
 
     @IBAction func greenBtn(_ sender: UIButton) { // Actually a red btn
+        RealmService.shared.perform { [model = model!] in
+            model.isImportant.toggle()
+        }
+
         headerView.backgroundColor = UIColor.rgb(217, 56, 41)
     }
 

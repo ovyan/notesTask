@@ -284,8 +284,14 @@ extension ViewController {
         func cvAnimationCompletion(_ param: Bool) {
             
             let item = collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? TaskCardCell
+            let oldColor = item?.headerView.backgroundColor
+            
             item?.noteTextView.isHidden = true
+            item?.headerView.backgroundColor = .white
+            
             animatableView.image = item?.snapshotImage()
+            
+            item?.headerView.backgroundColor = oldColor
             item?.noteTextView.isHidden = false
             
             UIView.transition(with: animatableView,

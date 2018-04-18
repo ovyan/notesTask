@@ -22,6 +22,7 @@
 		B9BB1D3920811D0A007A0151 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3220811CF9007A0151 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9BB1D3C20811DCC007A0151 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB1D3B20811DCC007A0151 /* RealmService.swift */; };
 		B9BB1D3F20811F57007A0151 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB1D3E20811F57007A0151 /* TaskModel.swift */; };
+		B9F6ED8B2087DC4200BEE58F /* Bool+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F6ED8A2087DC4200BEE58F /* Bool+Extension.swift */; };
 		DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */; };
 		DC2CC5E82010D199004DB704 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */; };
 		DC2CC5EC201107D8004DB704 /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */; };
@@ -60,6 +61,7 @@
 		B9BB1D3420811D05007A0151 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		B9BB1D3B20811DCC007A0151 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		B9BB1D3E20811F57007A0151 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		B9F6ED8A2087DC4200BEE58F /* Bool+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extension.swift"; sourceTree = "<group>"; };
 		DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extention.swift"; sourceTree = "<group>"; };
 		DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 		DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
@@ -180,9 +182,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B9F6ED892087DC3800BEE58F /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				B9F6ED8A2087DC4200BEE58F /* Bool+Extension.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		DC2CC5E42010D140004DB704 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				B9F6ED892087DC3800BEE58F /* Foundation */,
 				B9B7DDC62087A50C001681E6 /* Realm */,
 				B9B7DDC32087A480001681E6 /* UIKit */,
 				B93319792059D5A300C3ED33 /* EPType.swift */,
@@ -300,6 +311,7 @@
 				B9072F5C2059B70D00137EFC /* NotesMockDataProvider.swift in Sources */,
 				DC2CC5E82010D199004DB704 /* UIImage+Extention.swift in Sources */,
 				B9072F592059B0CF00137EFC /* NoteViewModel.swift in Sources */,
+				B9F6ED8B2087DC4200BEE58F /* Bool+Extension.swift in Sources */,
 				DC4D15A4200BDE240060BA1A /* ViewController.swift in Sources */,
 				B9B7DDC22087A3FC001681E6 /* Constants.swift in Sources */,
 				B9B7DDC82087A517001681E6 /* Realm+Increment.swift in Sources */,
