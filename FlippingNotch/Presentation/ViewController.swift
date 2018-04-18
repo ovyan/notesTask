@@ -282,6 +282,7 @@ extension ViewController {
         }
         
         func cvAnimationCompletion(_ param: Bool) {
+            
             let item = collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? TaskCardCell
             item?.noteTextView.isHidden = true
             animatableView.image = item?.snapshotImage()
@@ -289,11 +290,16 @@ extension ViewController {
             
             UIView.transition(with: animatableView,
                               duration: 0.2,
-                              options: UIViewAnimationOptions.transitionFlipFromBottom,
+                              options: .transitionFlipFromBottom,
                               animations: {
                                   animatableView.frame.size = flowLayout.itemSize
-                                  animatableView.frame.origin = CGPoint(x: (self.collectionView.frame.width - flowLayout.itemSize.width) / 2.0,
+                                
+                                  let itemWidth: CGFloat = 359
+                                  animatableView.frame.size.width = itemWidth
+                                
+                                  animatableView.frame.origin = CGPoint(x: (self.collectionView.frame.width - itemWidth) / 2.0,
                                                                         y: self.collectionView.frame.origin.y - height * 0.5)
+                                
                                   self.collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height)
                               },
                               completion: { _ in
