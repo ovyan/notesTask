@@ -37,12 +37,10 @@ public final class CardCollectionViewCell: UICollectionViewCell {
     }
 
     public override var intrinsicContentSize: CGSize {
-        let textViewBaseHeight: CGFloat = 120
-        let cellBaseHeight: CGFloat = 90
-        let textViewHeight = noteTextView.intrinsicContentSize.height.leftBound(to: textViewBaseHeight)
+        let textViewHeight = noteTextView.intrinsicContentSize.height.leftBound(to: CUI.Feed.Card.textViewHeight)
         let baseWidth = frame.width
 
-        return CGSize(width: baseWidth, height: cellBaseHeight + textViewHeight)
+        return CGSize(width: baseWidth, height: CUI.Feed.Card.baseHeight + textViewHeight)
     }
 
     // MARK: - Members
