@@ -85,7 +85,7 @@ public final class TaskCardCell: UICollectionViewCell {
     private func updateView(with model: TaskModel) {
         // noteTitleLabel.text = "Some title"
         noteTextView.text = model.text
-        headerView.backgroundColor = model.isImportant ? .red : .green
+        headerView.backgroundColor = model.isImportant ? .red : .white
     }
 
     private func updateModel() {

@@ -243,7 +243,7 @@ extension ViewController {
         
         notchView.translatesAutoresizingMaskIntoConstraints = false
         notchView.backgroundColor = UIColor.black
-        notchView.layer.cornerRadius = 20
+        notchView.layer.cornerRadius = 8
         notchView.layer.masksToBounds = false
         
         notchView.centerXAnchor.constraint(equalTo: view.centerXAnchor).activate()
@@ -303,7 +303,7 @@ extension ViewController {
                                   self.collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height)
                               },
                               completion: { _ in
-                                  self.collectionView.transform = CGAffineTransform.identity
+                                  self.collectionView.transform = .identity
                                   animatableView.removeFromSuperview()
                                   self.isPulling = false
                                   self.appendNote()
@@ -311,12 +311,5 @@ extension ViewController {
         }
         
         UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: cvAnimation, completion: cvAnimationCompletion)
-        
-        let cornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
-        cornerRadiusAnimation.fromValue = 16
-        cornerRadiusAnimation.toValue = 10
-        cornerRadiusAnimation.duration = 0.3
-        animatableView.layer.add(cornerRadiusAnimation, forKey: "cornerRadius")
-        animatableView.layer.cornerRadius = 10
     }
 }
