@@ -24,8 +24,8 @@ open class RealmModel: Object {
 public final class TaskModel: RealmModel {
     // MARK: - Members
 
-    @objc dynamic var createdAt = Date()
     @objc dynamic var text: String = ""
+    @objc dynamic var date = Date()
     @objc dynamic var isImportant: Bool = false
 }
 

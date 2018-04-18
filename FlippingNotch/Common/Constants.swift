@@ -2,18 +2,22 @@
 //  Constants.swift
 //  FlippingNotch
 //
-//  Created by Joan Disho on 18.01.18.
+//  Created by Evgeniy on 18.04.18.
 //  Copyright © 2018 Joan Disho. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-enum Constants {
-
-    enum Color {
-
+enum CUI {
+    enum Feed {
+        enum Card {
+            static let height: CGFloat = 210
+        }
     }
+}
+
+enum Constants {
+    enum Color {}
 
     enum Notch {
         static let notchWidth: CGFloat = 209
