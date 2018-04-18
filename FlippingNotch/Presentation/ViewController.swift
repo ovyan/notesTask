@@ -188,7 +188,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.frame.width - margin.left - margin.right, height: CUI.Feed.Card.height)
         }
         
-        return cell.intrinsicContentSize
+        return cell.model!.size
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -200,13 +200,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         if newSize != size {
             collectionView.collectionViewLayout.invalidateLayout()
         }
-    }
-}
-
-public extension CGFloat {
-    
-    public func leftBound(to value: CGFloat) -> CGFloat {
-        return self < value ? value : self
     }
 }
 

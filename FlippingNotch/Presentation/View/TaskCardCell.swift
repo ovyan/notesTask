@@ -90,15 +90,19 @@ public final class TaskCardCell: UICollectionViewCell {
 
     private func updateModel() {
         let text: String = noteTextView.text
+        let height = noteTimeLeftLabel.intrinsicContentSize.height
+        let width = noteTimeLeftLabel.intrinsicContentSize.width
 
         RealmService.shared.perform { [model = model!] in
             model.text = text
+            model.height = height
+            model.width = width
         }
     }
 
     // MARK: - Actions
 
-    @IBAction func greenBtn(_ sender: UIButton) { // Actually a red btn
+    @IBAction func toggleIsImportant(_ sender: UIButton) {
         RealmService.shared.perform { [model = model!] in
             model.isImportant.toggle()
         }

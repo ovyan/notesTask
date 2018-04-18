@@ -6,8 +6,8 @@
 //  Copyright © 2018 Evgeniy All rights reserved.
 //
 
-import Foundation
 import RealmSwift
+import UIKit
 
 protocol AnyRealmModel: class {
     var id: Int { get }
@@ -19,6 +19,15 @@ public final class TaskModel: RealmModel {
     @objc dynamic var text: String = ""
     @objc dynamic var date = Date()
     @objc dynamic var isImportant: Bool = false
+    
+    @objc dynamic var width: CGFloat = 119
+    @objc dynamic var height: CGFloat = 119
+    
+    // MARK: - Getters
+    
+    public var size: CGSize {
+        return CGSize.init(width: width, height: height)
+    }
 }
 
 extension TaskModel {
