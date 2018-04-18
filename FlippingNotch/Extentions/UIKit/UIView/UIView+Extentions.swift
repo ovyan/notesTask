@@ -12,6 +12,7 @@ import UIKit
 extension UIView {
     func snapshotImage(afterScreenUpdated: Bool = true) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: bounds.size)
+
         return renderer.image { _ in
             self.drawHierarchy(in: bounds, afterScreenUpdates: afterScreenUpdated)
         }

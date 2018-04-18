@@ -283,10 +283,9 @@ extension ViewController {
         
         func cvAnimationCompletion(_ param: Bool) {
             let item = collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? TaskCardCell
-            let oldText = item?.noteTextView.text
-            item?.noteTextView.text = ""
+            item?.noteTextView.isHidden = true
             animatableView.image = item?.snapshotImage()
-            item?.noteTextView.text = oldText
+            item?.noteTextView.isHidden = false
             
             UIView.transition(with: animatableView,
                               duration: 0.2,
