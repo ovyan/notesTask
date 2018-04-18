@@ -11,11 +11,16 @@ import UIKit
 enum CUI {
     enum Feed {
         enum Card {
-            static let height: CGFloat = 120
 
             static let textViewHeight: CGFloat = 70
 
-            static let baseHeight: CGFloat = height - textViewHeight
+            static let toolbarHeight: CGFloat = 44
+
+            static let headerHeight: CGFloat = 6
+
+            static let baseHeight: CGFloat = toolbarHeight + headerHeight
+
+            static let height: CGFloat = baseHeight + textViewHeight
         }
     }
 }

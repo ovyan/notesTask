@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -256,14 +256,13 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUg-OG-O3Q" userLabel="Header">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="6"/>
-                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="6" id="ZN0-AS-WKQ"/>
-                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="6" id="wzH-5F-DeF"/>
                                                             </constraints>
                                                         </view>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1x-wq-7UG" userLabel="Note Text">
-                                                            <rect key="frame" x="0.0" y="5" width="343" height="70"/>
+                                                            <rect key="frame" x="0.0" y="6" width="343" height="69"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -336,17 +335,15 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="zUg-OG-O3Q" firstAttribute="top" secondItem="tqd-Ls-uUp" secondAttribute="top" id="BfM-Lj-23a"/>
                                                         <constraint firstAttribute="trailing" secondItem="5ef-wD-Ywo" secondAttribute="trailing" id="FAn-44-2Ca"/>
-                                                        <constraint firstItem="zUg-OG-O3Q" firstAttribute="leading" secondItem="tqd-Ls-uUp" secondAttribute="leading" id="KkP-a0-uSa"/>
-                                                        <constraint firstAttribute="trailing" secondItem="zUg-OG-O3Q" secondAttribute="trailing" id="P07-v9-eXr"/>
-                                                        <constraint firstItem="zUg-OG-O3Q" firstAttribute="top" secondItem="tqd-Ls-uUp" secondAttribute="top" id="SdX-lk-B3Q"/>
+                                                        <constraint firstItem="Z1x-wq-7UG" firstAttribute="top" secondItem="zUg-OG-O3Q" secondAttribute="bottom" id="HFx-Dv-ZW9"/>
+                                                        <constraint firstItem="zUg-OG-O3Q" firstAttribute="top" secondItem="tqd-Ls-uUp" secondAttribute="top" id="cKX-d7-MuR"/>
                                                         <constraint firstItem="Z1x-wq-7UG" firstAttribute="leading" secondItem="tqd-Ls-uUp" secondAttribute="leading" id="cra-3j-vYq"/>
-                                                        <constraint firstAttribute="trailing" secondItem="zUg-OG-O3Q" secondAttribute="trailing" id="dRK-Ak-mqa"/>
+                                                        <constraint firstItem="zUg-OG-O3Q" firstAttribute="leading" secondItem="tqd-Ls-uUp" secondAttribute="leading" id="fOM-x4-g30"/>
                                                         <constraint firstAttribute="trailing" secondItem="Z1x-wq-7UG" secondAttribute="trailing" id="ow1-aC-Tpe"/>
                                                         <constraint firstAttribute="bottom" secondItem="5ef-wD-Ywo" secondAttribute="bottom" id="r1O-Hl-TlH"/>
                                                         <constraint firstItem="5ef-wD-Ywo" firstAttribute="leading" secondItem="tqd-Ls-uUp" secondAttribute="leading" id="s0G-MQ-bWj"/>
-                                                        <constraint firstItem="zUg-OG-O3Q" firstAttribute="leading" secondItem="tqd-Ls-uUp" secondAttribute="leading" id="x61-Sc-4l5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zUg-OG-O3Q" secondAttribute="trailing" id="scp-mg-Ypq"/>
                                                         <constraint firstItem="5ef-wD-Ywo" firstAttribute="top" secondItem="Z1x-wq-7UG" secondAttribute="bottom" id="xZI-BP-9m2"/>
                                                     </constraints>
                                                 </view>
