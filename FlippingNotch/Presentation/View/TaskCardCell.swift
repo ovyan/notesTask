@@ -12,7 +12,7 @@ public protocol NoteInteractionDelegate: class {
     func didTapAddButton()
 
     func shouldInvalidateLayout()
-    
+
     func didMarkImportant(cell: TaskCardCell)
 }
 
@@ -93,7 +93,7 @@ public final class TaskCardCell: UICollectionViewCell {
     private func updateModel() {
         let text: String = noteTextView.text
         let size = intrinsicContentSize
-        
+
         let height = size.height
         let width = size.width
 
@@ -110,8 +110,8 @@ public final class TaskCardCell: UICollectionViewCell {
         RealmService.shared.perform { [model = model!] in
             model.isImportant.toggle()
         }
-        
-        headerView.backgroundColor = UIColor.rgb(217, 56, 41)
+
+        headerView.backgroundColor = model!.isImportant ? UIColor.rgb(217, 56, 41) : .white
         interactionDelegate?.didMarkImportant(cell: self)
     }
 
