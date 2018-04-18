@@ -41,7 +41,7 @@ final class ViewController: UIViewController {
     
     private let realm = RealmService.shared
     
-    private var datasource: Results<TaskModel> = RealmService.shared.fetchAll()
+    private var datasource: [TaskModel] = []
     
     // MARK: Overrides
     
@@ -49,6 +49,11 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupScreen()
+    }
+    
+    private func fetchData() {
+        let fetched: Results<TaskModel> = RealmService.shared.fetchAll()
+        datasource = Array(fetched)
     }
     
     private func setupScreen() {
@@ -103,88 +108,17 @@ final class ViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
-    // MARK: UI
-    
-    private func configureNotchView() {
-        view.addSubview(notchView)
-        
-        notchView.translatesAutoresizingMaskIntoConstraints = false
-        notchView.backgroundColor = UIColor.black
-        notchView.layer.cornerRadius = 20
-        notchView.layer.masksToBounds = false
-        
-        notchView.centerXAnchor.constraint(equalTo: view.centerXAnchor).activate()
-        notchView.widthAnchor.constraint(equalToConstant: Constants.Notch.notchWidth).activate()
-        notchView.heightAnchor.constraint(equalToConstant: 200).activate()
-        notchViewBottomConstraint = notchView.bottomAnchor.constraint(equalTo: view.topAnchor,
-                                                                      constant: Constants.Notch.notchHeight)
-        notchViewBottomConstraint.activate()
-    }
-    
-    private func animateView() {
-        let animatableView = UIImageView(frame: notchView.frame)
-        animatableView.backgroundColor = UIColor.black
-        animatableView.layer.cornerRadius = notchView.layer.cornerRadius
-        animatableView.layer.masksToBounds = true
-        animatableView.frame = notchView.frame
-        view.addSubview(animatableView)
-        
-        notchViewBottomConstraint.constant = Constants.Notch.notchHeight
-        
-        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let height = flowLayout.itemSize.height + flowLayout.minimumInteritemSpacing
-        
-        collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -Constants.Notch.maxScrollOffset)
-        
-        func cvAnimation() {
-            let itemSize = flowLayout.itemSize
-            animatableView.frame.size = CGSize(width: Constants.Notch.notchWidth,
-                                               height: (itemSize.height / itemSize.width) * Constants.Notch.notchWidth)
-            animatableView.image = UIImage.fromColor(view.backgroundColor?.withAlphaComponent(0.2) ?? UIColor.black)
-            animatableView.frame.origin.y = Constants.Notch.notchViewTopInset
-            collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height * 0.5)
-        }
-        
-        func cvAnimationCompletion(_ param: Bool) {
-            let item = collectionView.cellForItem(at: IndexPath(row: 0, section: 0))
-            animatableView.image = item?.snapshotImage()
-            
-            UIView.transition(with: animatableView,
-                              duration: 0.2,
-                              options: UIViewAnimationOptions.transitionFlipFromBottom,
-                              animations: {
-                                  animatableView.frame.size = flowLayout.itemSize
-                                  animatableView.frame.origin = CGPoint(x: (self.collectionView.frame.width - flowLayout.itemSize.width) / 2.0,
-                                                                        y: self.collectionView.frame.origin.y - height * 0.5)
-                                  self.collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height)
-                              },
-                              completion: { _ in
-                                  self.collectionView.transform = CGAffineTransform.identity
-                                  animatableView.removeFromSuperview()
-                                  self.isPulling = false
-                                  self.appendNote()
-            })
-        }
-        
-        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: cvAnimation, completion: cvAnimationCompletion)
-        
-        let cornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
-        cornerRadiusAnimation.fromValue = 16
-        cornerRadiusAnimation.toValue = 10
-        cornerRadiusAnimation.duration = 0.3
-        animatableView.layer.add(cornerRadiusAnimation, forKey: "cornerRadius")
-        animatableView.layer.cornerRadius = 10
-    }
+    // MARK: - New note
     
     private func appendNote() {
-        // let newNote = NotesMockDataProvider.note()
-        // datasource.insert(newNote, at: 0)
         let newNote = TaskModel()
+        datasource.append(newNote)
         realm.save(newNote)
-        // collectionView.reloadData()
-        collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: selectNewNote)
+        //collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+        collectionView.reloadData()
+        
+        // DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: selectNewNote)
     }
     
     private func selectNewNote() {
@@ -234,9 +168,9 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardCollectionViewCell
-        //cell.headerView.backgroundColor = UIColor.rgb(251, 199, 0)
+        // cell.headerView.backgroundColor = UIColor.rgb(251, 199, 0)
         cell.headerView.backgroundColor = UIColor.rgb(255, 255, 255)
-        cell.layer.cornerRadius = 8 //10
+        cell.layer.cornerRadius = 8 // 10
         cell.layer.masksToBounds = true
         cell.interactionDelegate = self
         
@@ -313,5 +247,79 @@ extension ViewController: NoteInteractionDelegate {
     func shouldInvalidateLayout() {
         // collectionView.invalidateIntrinsicContentSize()
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+}
+
+extension ViewController {
+    
+    private func configureNotchView() {
+        view.addSubview(notchView)
+        
+        notchView.translatesAutoresizingMaskIntoConstraints = false
+        notchView.backgroundColor = UIColor.black
+        notchView.layer.cornerRadius = 20
+        notchView.layer.masksToBounds = false
+        
+        notchView.centerXAnchor.constraint(equalTo: view.centerXAnchor).activate()
+        notchView.widthAnchor.constraint(equalToConstant: Constants.Notch.notchWidth).activate()
+        notchView.heightAnchor.constraint(equalToConstant: 200).activate()
+        notchViewBottomConstraint = notchView.bottomAnchor.constraint(equalTo: view.topAnchor,
+                                                                      constant: Constants.Notch.notchHeight)
+        notchViewBottomConstraint.activate()
+    }
+    
+    private func animateView() {
+        let animatableView = UIImageView(frame: notchView.frame)
+        animatableView.backgroundColor = UIColor.black
+        animatableView.layer.cornerRadius = notchView.layer.cornerRadius
+        animatableView.layer.masksToBounds = true
+        animatableView.frame = notchView.frame
+        view.addSubview(animatableView)
+        
+        notchViewBottomConstraint.constant = Constants.Notch.notchHeight
+        
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let height = flowLayout.itemSize.height + flowLayout.minimumInteritemSpacing
+        
+        collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: -Constants.Notch.maxScrollOffset)
+        
+        func cvAnimation() {
+            let itemSize = flowLayout.itemSize
+            animatableView.frame.size = CGSize(width: Constants.Notch.notchWidth,
+                                               height: (itemSize.height / itemSize.width) * Constants.Notch.notchWidth)
+            animatableView.image = UIImage.fromColor(view.backgroundColor?.withAlphaComponent(0.2) ?? UIColor.black)
+            animatableView.frame.origin.y = Constants.Notch.notchViewTopInset
+            collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height * 0.5)
+        }
+        
+        func cvAnimationCompletion(_ param: Bool) {
+            let item = collectionView.cellForItem(at: IndexPath(row: 0, section: 0))
+            animatableView.image = item?.snapshotImage()
+            
+            UIView.transition(with: animatableView,
+                              duration: 0.2,
+                              options: UIViewAnimationOptions.transitionFlipFromBottom,
+                              animations: {
+                                  animatableView.frame.size = flowLayout.itemSize
+                                  animatableView.frame.origin = CGPoint(x: (self.collectionView.frame.width - flowLayout.itemSize.width) / 2.0,
+                                                                        y: self.collectionView.frame.origin.y - height * 0.5)
+                                  self.collectionView.transform = CGAffineTransform.identity.translatedBy(x: 0, y: height)
+                              },
+                              completion: { _ in
+                                  self.collectionView.transform = CGAffineTransform.identity
+                                  animatableView.removeFromSuperview()
+                                  self.isPulling = false
+                                  self.appendNote()
+            })
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: cvAnimation, completion: cvAnimationCompletion)
+        
+        let cornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        cornerRadiusAnimation.fromValue = 16
+        cornerRadiusAnimation.toValue = 10
+        cornerRadiusAnimation.duration = 0.3
+        animatableView.layer.add(cornerRadiusAnimation, forKey: "cornerRadius")
+        animatableView.layer.cornerRadius = 10
     }
 }
