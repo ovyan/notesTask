@@ -223,6 +223,12 @@ extension ViewController: UICollectionViewDelegate {
 }
 
 extension ViewController: NoteInteractionDelegate {
+    func didMarkImportant(cell: TaskCardCell) {
+        if let indexPath = collectionView.indexPath(for: cell) {
+            collectionView.moveItem(at: indexPath, to: IndexPath(row: 0, section: 0))
+        }
+    }
+    
     func didTapAddButton() {
         showModal()
     }
@@ -290,7 +296,6 @@ extension ViewController {
             
             item?.headerView.backgroundColor = oldColor
             item?.noteTextView.isHidden = false
-            
             UIView.transition(with: animatableView,
                               duration: 0.2,
                               options: .transitionFlipFromBottom,

@@ -46,6 +46,6 @@ enum Constants {
         static let notchHeight: CGFloat = 0
         static let maxScrollOffset: CGFloat = -86
         // static let notchViewTopInset: CGFloat = 40
-        static let notchViewTopInset: CGFloat = 0
+        static let notchViewTopInset: CGFloat = 10
     }
 }

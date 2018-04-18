@@ -12,6 +12,8 @@ public protocol NoteInteractionDelegate: class {
     func didTapAddButton()
 
     func shouldInvalidateLayout()
+    
+    func didMarkImportant(cell: TaskCardCell)
 }
 
 public typealias TapHandler = VoidBlock
@@ -108,8 +110,9 @@ public final class TaskCardCell: UICollectionViewCell {
         RealmService.shared.perform { [model = model!] in
             model.isImportant.toggle()
         }
-
+        
         headerView.backgroundColor = UIColor.rgb(217, 56, 41)
+        interactionDelegate?.didMarkImportant(cell: self)
     }
 
     @IBAction func watchBtnTap(_ sender: UIButton) {
