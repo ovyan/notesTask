@@ -13,7 +13,7 @@
 		B93319782059D50D00C3ED33 /* UIView+Animate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319772059D50D00C3ED33 /* UIView+Animate.swift */; };
 		B933197A2059D5A300C3ED33 /* EPType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93319792059D5A300C3ED33 /* EPType.swift */; };
 		B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94FAF8120598A5900A962D5 /* UIColorExtension.swift */; };
-		B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */; };
+		B987E8D62058656500DDC1AA /* TaskCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987E8D52058656500DDC1AA /* TaskCardCell.swift */; };
 		B9B7DDC22087A3FC001681E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7DDC12087A3FB001681E6 /* Constants.swift */; };
 		B9B7DDC82087A517001681E6 /* Realm+Increment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7DDC72087A516001681E6 /* Realm+Increment.swift */; };
 		B9BB1D3320811CF9007A0151 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3220811CF9007A0151 /* Realm.framework */; };
@@ -53,7 +53,7 @@
 		B93319772059D50D00C3ED33 /* UIView+Animate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animate.swift"; sourceTree = "<group>"; };
 		B93319792059D5A300C3ED33 /* EPType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPType.swift; sourceTree = "<group>"; };
 		B94FAF8120598A5900A962D5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		B987E8D52058656500DDC1AA /* TaskCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardCell.swift; sourceTree = "<group>"; };
 		B9B7DDC12087A3FB001681E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9B7DDC72087A516001681E6 /* Realm+Increment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Increment.swift"; sourceTree = "<group>"; };
 		B9BB1D3220811CF9007A0151 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		B992E70D20837478008902CA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */,
+				B987E8D52058656500DDC1AA /* TaskCardCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,7 +307,7 @@
 				B9BB1D3F20811F57007A0151 /* TaskModel.swift in Sources */,
 				B93319782059D50D00C3ED33 /* UIView+Animate.swift in Sources */,
 				DC2CC5EC201107D8004DB704 /* UIView+Extentions.swift in Sources */,
-				B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */,
+				B987E8D62058656500DDC1AA /* TaskCardCell.swift in Sources */,
 				B9BB1D3C20811DCC007A0151 /* RealmService.swift in Sources */,
 				DC2CC5E62010D167004DB704 /* NSLayoutConstraint+Extention.swift in Sources */,
 				B933197A2059D5A300C3ED33 /* EPType.swift in Sources */,

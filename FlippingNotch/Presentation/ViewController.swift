@@ -33,10 +33,6 @@ final class ViewController: UIViewController {
     
     private var effect: UIVisualEffect!
     
-    private var contentWidth: CGFloat = 0.0
-    
-    private var firstItemHeight: CGFloat = 270
-    
     // MARK: - Members
     
     private let realm = RealmService.shared
@@ -49,6 +45,7 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupScreen()
+        fetchData()
     }
     
     private func fetchData() {
@@ -115,24 +112,20 @@ final class ViewController: UIViewController {
         datasource.append(newNote)
         realm.save(newNote)
         
-        //collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
+        // collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
         collectionView.reloadData()
         
         // DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: selectNewNote)
     }
     
     private func selectNewNote() {
-        guard let newCells = collectionView.visibleCells as? [CardCollectionViewCell] else { return }
+        guard let newCells = collectionView.visibleCells as? [TaskCardCell] else { return }
         let latestCell = newCells.sorted { $0.model!.date > $1.model!.date }.first
         latestCell?.noteTextView.becomeFirstResponder()
     }
     
     private func onDatasourceChange(_ newItems: [NoteViewModel]) {
         collectionView.reloadData()
-    }
-    
-    private func addDoneButtonAboveKeyboard() {
-        
     }
     
     @objc
@@ -167,7 +160,7 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CardCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TaskCardCell
         // cell.headerView.backgroundColor = UIColor.rgb(251, 199, 0)
         cell.headerView.backgroundColor = UIColor.rgb(255, 255, 255)
         cell.layer.cornerRadius = 8 // 10
@@ -182,7 +175,7 @@ extension ViewController: UICollectionViewDataSource {
         return cell
     }
     
-    private func setDoneOnKeyboard(for cell: CardCollectionViewCell) {
+    private func setDoneOnKeyboard(for cell: TaskCardCell) {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         
@@ -196,7 +189,7 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TaskCardCell else {
             let margin = collectionView.layoutMargins
             
             return CGSize(width: collectionView.frame.width - margin.left - margin.right, height: CUI.Feed.Card.height)
@@ -206,7 +199,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? CardCollectionViewCell else { return }
+        guard let cell = cell as? TaskCardCell else { return }
         
         let size = cell.frame.size
         let newSize = cell.intrinsicContentSize

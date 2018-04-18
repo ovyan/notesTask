@@ -17,7 +17,7 @@ public protocol NoteInteractionDelegate: class {
 public typealias TapHandler = VoidBlock
 public typealias CardTapHandler = (TaskModel) -> Void
 
-public final class CardCollectionViewCell: UICollectionViewCell {
+public final class TaskCardCell: UICollectionViewCell {
     // MARK: - Outlets
 
     @IBOutlet var headerView: UIView!
@@ -107,7 +107,7 @@ public final class CardCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension CardCollectionViewCell: UITextViewDelegate {
+extension TaskCardCell: UITextViewDelegate {
     public func textViewDidChange(_ textView: UITextView) {
         onTextViewChange(textView)
     }
