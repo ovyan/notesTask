@@ -21,6 +21,18 @@ enum CUI {
             static let baseHeight: CGFloat = toolbarHeight + headerHeight
 
             static let height: CGFloat = baseHeight + textViewHeight
+            
+            static let insets = UIEdgeInsets(top: Inset.top, left: Inset.left, bottom: Inset.bot, right: Inset.right)
+            
+            enum Inset {
+                static let top: CGFloat = 0
+                
+                static let bot: CGFloat = 0
+                
+                static let left: CGFloat = 16
+                
+                static let right: CGFloat = 16
+            }
         }
     }
 }

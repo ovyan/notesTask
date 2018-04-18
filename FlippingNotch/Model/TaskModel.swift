@@ -19,14 +19,20 @@ public final class TaskModel: RealmModel {
     @objc dynamic var text: String = ""
     @objc dynamic var date = Date()
     @objc dynamic var isImportant: Bool = false
-    
+
     @objc dynamic var width: CGFloat = 119
     @objc dynamic var height: CGFloat = 119
-    
+
     // MARK: - Getters
-    
+
     public var size: CGSize {
-        return CGSize.init(width: width, height: height)
+        get {
+            return CGSize(width: width, height: height)
+        }
+        set {
+            width = newValue.width
+            height = newValue.height
+        }
     }
 }
 

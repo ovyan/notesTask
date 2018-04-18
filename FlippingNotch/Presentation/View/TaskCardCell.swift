@@ -90,8 +90,10 @@ public final class TaskCardCell: UICollectionViewCell {
 
     private func updateModel() {
         let text: String = noteTextView.text
-        let height = noteTimeLeftLabel.intrinsicContentSize.height
-        let width = noteTimeLeftLabel.intrinsicContentSize.width
+        let size = intrinsicContentSize
+        
+        let height = size.height
+        let width = size.width
 
         RealmService.shared.perform { [model = model!] in
             model.text = text

@@ -102,7 +102,11 @@ final class ViewController: UIViewController {
     // MARK: - New note
     
     private func appendNote() {
+        let insets = CUI.Feed.Card.insets
+        let width = collectionView.frame.width - insets.left - insets.right
+        
         let newNote = TaskModel()
+        newNote.width = width
         realm.save(newNote)
         
         // collectionView.insertItems(at: [IndexPath(row: 0, section: 0)])
@@ -183,9 +187,9 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let cell = collectionView.cellForItem(at: indexPath) as? TaskCardCell else {
-            let margin = collectionView.layoutMargins
+            let insets = CUI.Feed.Card.insets
             
-            return CGSize(width: collectionView.frame.width - margin.left - margin.right, height: CUI.Feed.Card.height)
+            return CGSize(width: collectionView.frame.width - insets.left - insets.right, height: CUI.Feed.Card.height - insets.top - insets.bottom)
         }
         
         return cell.model!.size
