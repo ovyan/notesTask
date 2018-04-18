@@ -130,10 +130,10 @@
 		B9B7DDC32087A480001681E6 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */,
-				DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */,
 				B9B7DDC52087A48E001681E6 /* UIColor */,
 				B9B7DDC42087A483001681E6 /* UIView */,
+				DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */,
+				DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -141,8 +141,8 @@
 		B9B7DDC42087A483001681E6 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */,
 				B93319772059D50D00C3ED33 /* UIView+Animate.swift */,
+				DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
