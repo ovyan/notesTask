@@ -15,6 +15,7 @@
 		B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94FAF8120598A5900A962D5 /* UIColorExtension.swift */; };
 		B987E8D62058656500DDC1AA /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */; };
 		B9B7DDC22087A3FC001681E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7DDC12087A3FB001681E6 /* Constants.swift */; };
+		B9B7DDC82087A517001681E6 /* Realm+Increment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B7DDC72087A516001681E6 /* Realm+Increment.swift */; };
 		B9BB1D3320811CF9007A0151 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3220811CF9007A0151 /* Realm.framework */; };
 		B9BB1D3620811D0A007A0151 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3420811D05007A0151 /* RealmSwift.framework */; };
 		B9BB1D3720811D0A007A0151 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9BB1D3420811D05007A0151 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -54,6 +55,7 @@
 		B94FAF8120598A5900A962D5 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B987E8D52058656500DDC1AA /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		B9B7DDC12087A3FB001681E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B9B7DDC72087A516001681E6 /* Realm+Increment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Realm+Increment.swift"; sourceTree = "<group>"; };
 		B9BB1D3220811CF9007A0151 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		B9BB1D3420811D05007A0151 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		B9BB1D3B20811DCC007A0151 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
@@ -125,6 +127,42 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		B9B7DDC32087A480001681E6 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */,
+				DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */,
+				B9B7DDC52087A48E001681E6 /* UIColor */,
+				B9B7DDC42087A483001681E6 /* UIView */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		B9B7DDC42087A483001681E6 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */,
+				B93319772059D50D00C3ED33 /* UIView+Animate.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		B9B7DDC52087A48E001681E6 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				B94FAF8120598A5900A962D5 /* UIColorExtension.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		B9B7DDC62087A50C001681E6 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				B9B7DDC72087A516001681E6 /* Realm+Increment.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		B9BB1D3120811CF8007A0151 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,12 +183,9 @@
 		DC2CC5E42010D140004DB704 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				B9B7DDC62087A50C001681E6 /* Realm */,
+				B9B7DDC32087A480001681E6 /* UIKit */,
 				B93319792059D5A300C3ED33 /* EPType.swift */,
-				DC2CC5E52010D167004DB704 /* NSLayoutConstraint+Extention.swift */,
-				B94FAF8120598A5900A962D5 /* UIColorExtension.swift */,
-				DC2CC5E72010D199004DB704 /* UIImage+Extention.swift */,
-				B93319772059D50D00C3ED33 /* UIView+Animate.swift */,
-				DC2CC5EB201107D8004DB704 /* UIView+Extentions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -267,6 +302,7 @@
 				B9072F592059B0CF00137EFC /* NoteViewModel.swift in Sources */,
 				DC4D15A4200BDE240060BA1A /* ViewController.swift in Sources */,
 				B9B7DDC22087A3FC001681E6 /* Constants.swift in Sources */,
+				B9B7DDC82087A517001681E6 /* Realm+Increment.swift in Sources */,
 				B94FAF8220598A5900A962D5 /* UIColorExtension.swift in Sources */,
 				B9BB1D3F20811F57007A0151 /* TaskModel.swift in Sources */,
 				B93319782059D50D00C3ED33 /* UIView+Animate.swift in Sources */,

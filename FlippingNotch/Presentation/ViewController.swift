@@ -41,7 +41,7 @@ final class ViewController: UIViewController {
     
     private let realm = RealmService.shared
     
-    private var datasource: Results<TaskModel> = RealmService.shared.getAll()
+    private var datasource: Results<TaskModel> = RealmService.shared.fetchAll()
     
     // MARK: Overrides
     
